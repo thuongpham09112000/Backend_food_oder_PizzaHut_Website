@@ -1,0 +1,28 @@
+{
+  "name": "backend___food_oder_pizzahut",
+  "version": "1.0.0",
+  "description": "Backend food oder website pizzahut",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thuongpham09112000/Backend_food_oder_PizzaHut_Website.git"
+  },
+  "keywords": [
+    "food",
+    "oder",
+    "nodejs"
+  ],
+  "author": "thuongpham09112000",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thuongpham09112000/Backend_food_oder_PizzaHut_Website/issues"
+  },
+  "homepage": "https://github.com/thuongpham09112000/Backend_food_oder_PizzaHut_Website#readme",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
