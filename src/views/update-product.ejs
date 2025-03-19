@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <!-- Mirrored from themes.pixelstrap.net/zomo/landing/backend/add-new-product.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 23 Dec 2024 00:48:40 GMT -->
+  <head>
+    <!-- meta data -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Zomo admin is super flexible, powerful, clean &amp; modern responsive bootstrap 5 admin template with unlimited possibilities."
+    />
+    <meta
+      name="keywords"
+      content="admin template,Zomo admin template, dashboard template, flat admin template, responsive admin template, web app"
+    />
+    <meta name="author" content="pixelstrap" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="48x48"
+      href="/images/favicon.ico"
+    />
+    <title><%= title %> | Pizzahut TN</title>
+
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com/" />
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Linear Icon css -->
+    <link rel="stylesheet" href="/css/linearicon.css" />
+
+    <!-- Fontawesome css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/css/vendors/font-awesome.css"
+    />
+
+    <!-- Themify icon css -->
+    <link rel="stylesheet" type="text/css" href="/css/vendors/themify.css" />
+
+    <!--Dropzon css -->
+    <link rel="stylesheet" type="text/css" href="/css/vendors/dropzone.css" />
+
+    <!-- Feather icon css-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/css/vendors/feather-icon.css"
+    />
+
+    <!-- remixicon css -->
+    <link rel="stylesheet" type="text/css" href="/css/remixicon.css" />
+
+    <link rel="stylesheet" type="text/css" href="/css/dropzone.css" />
+
+    <!-- Select2 css -->
+    <link rel="stylesheet" type="text/css" href="/css/select2.min.css" />
+
+    <!-- Plugins css -->
+    <link rel="stylesheet" type="text/css" href="/css/vendors/scrollbar.css" />
+    <link rel="stylesheet" type="text/css" href="/css/vendors/animate.css" />
+    <link rel="stylesheet" type="text/css" href="/css/vendors/chartist.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/css/vendors/date-picker.css"
+    />
+
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" type="text/css" href="/css/vendors/bootstrap.css" />
+
+    <!-- Bootstrap-tag input css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/css/vendors/bootstrap-tagsinput.css"
+    />
+
+    <!-- App css -->
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+  </head>
+
+  <body>
+    <!-- tap on top start -->
+    <div class="tap-top">
+      <i class="ri-arrow-up-double-fill"></i>
+    </div>
+    <!-- tap on tap end -->
+
+    <!-- loader start -->
+    <div class="loader-wrapper">
+      <img src="/images/loader.gif" alt="" />
+    </div>
+    <!-- loader end -->
+
+    <!-- page-wrapper start -->
+    <div class="page-wrapper compact-wrapper" id="pageWrapper">
+      <!-- Page Header Start-->
+      <div class="page-header">
+        <div class="header-wrapper m-0">
+          <div class="header-logo-wrapper p-0">
+            <div class="logo-wrapper">
+              <a href="index.html">
+                <img
+                  class="img-fluid main-logo"
+                  src="/images/logo/1.png"
+                  alt="logo"
+                />
+                <img
+                  class="img-fluid white-logo"
+                  src="/images/logo/1-white.png"
+                  alt="logo"
+                />
+              </a>
+            </div>
+            <div class="toggle-sidebar">
+              <i
+                class="status_toggle middle sidebar-toggle"
+                data-feather="align-center"
+              ></i>
+              <a href="index.html">
+                <img
+                  class="img-fluid for-light"
+                  src="/images/logo/1.png"
+                  alt="logo"
+                />
+                <img
+                  class="img-fluid for-dark"
+                  src="/images/logo/1-white.png"
+                  alt="logo"
+                />
+              </a>
+            </div>
+          </div>
+          <div class="welcome-title">
+            <h5>
+              For the love of pizza!!!
+              <img src="/images/header.gif" alt="" />
+            </h5>
+            <span>
+              Thỏa thích vị giác của bạn với những chiếc pizza ngon nhất của
+              chúng tôi!!!
+            </span>
+          </div>
+          <div class="nav-right col-xl-6 col-5 pull-right right-header p-0">
+            <ul class="nav-menus">
+              <li class="search-icon">
+                <span class="header-search">
+                  <i class="ri-search-line"></i>
+                </span>
+              </li>
+              <li class="onhover-dropdown">
+                <div class="notification-box">
+                  <i class="ri-notification-line"></i>
+                  <span class="badge rounded-pill badge-theme">4</span>
+                </div>
+                <ul class="notification-dropdown onhover-show-div">
+                  <li>
+                    <i class="ri-notification-line"></i>
+                    <h4 class="mb-0">Notitications</h4>
+                  </li>
+                  <li>
+                    <p>
+                      <i class="fa fa-circle me-2 font-primary"></i>Delivery
+                      processing <span class="pull-right">10 min.</span>
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <i class="fa fa-circle me-2 font-success"></i>Order
+                      Complete<span class="pull-right">1 hr</span>
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <i class="fa fa-circle me-2 font-info"></i>Tickets
+                      Generated<span class="pull-right">3 hr</span>
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <i class="fa fa-circle me-2 font-danger"></i>Delivery
+                      Complete<span class="pull-right">6 hr</span>
+                    </p>
+                  </li>
+                  <li>
+                    <a class="btn btn-primary" href="javascript:void(0)"
+                      >Check all notification</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li class="onhover-dropdown">
+                <div class="messages-box">
+                  <i class="ri-message-3-line"></i>
+                </div>
+                <ul class="messages-dropdown onhover-show-div">
+                  <li>
+                    <i class="ri-message-3-line"></i>
+                    <h4 class="mb-0">Messages</h4>
+                  </li>
+                  <li>
+                    <div class="d-flex align-items-center gap-2">
+                      <img src="/images/user/1.jpg" alt="" />
+                      <div>
+                        <h5>Nullam tempor</h5>
+                        <p>Curabitur facilisis erat viverra.</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="d-flex align-items-center gap-2">
+                      <img src="/images/user/2.jpg" alt="" />
+                      <div>
+                        <h5>Nullam tempor</h5>
+                        <p>Curabitur facilisis erat viverra.</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="d-flex align-items-center gap-2">
+                      <img src="/images/user/3.jpg" alt="" />
+                      <div>
+                        <h5>Nullam tempor</h5>
+                        <p>Curabitur facilisis erat viverra.</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="d-flex align-items-center gap-2">
+                      <img src="/images/user/4.jpg" alt="" />
+                      <div>
+                        <h5>Nullam tempor</h5>
+                        <p>Curabitur facilisis erat viverra.</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <a class="btn btn-primary" href="javascript:void(0)"
+                      >Go to Inbox</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <div class="mode">
+                  <i class="ri-moon-line"></i>
+                </div>
+              </li>
+              <li class="profile-nav onhover-dropdown pe-0 me-0">
+                <div class="media profile-media">
+                  <img
+                    class="user-profile rounded-circle"
+                    src="/images/users/4.jpg"
+                    alt=""
+                  />
+                  <div class="user-name-hide media-body">
+                    <span>Emay Walter</span>
+                    <p class="mb-0 font-roboto">
+                      Admin<i class="middle ri-arrow-down-s-line"></i>
+                    </p>
+                  </div>
+                </div>
+                <ul class="profile-dropdown onhover-show-div">
+                  <li>
+                    <a href="all-users.html">
+                      <i data-feather="users"></i>
+                      <span>Users</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="order-list.html">
+                      <i data-feather="archive"></i>
+                      <span>Orders</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="support-ticket.html">
+                      <i data-feather="phone"></i>
+                      <span>Spports Tickets</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="profile-setting.html">
+                      <i data-feather="settings"></i>
+                      <span>Settings</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" id="logout-link">
+                      <i data-feather="log-out"></i>
+                      <span>Log out</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="input-box">
+            <i class="ri-search-line"></i>
+            <input
+              class="search-box"
+              type="search"
+              placeholder="Bạn đang tìm kiếm gì?"
+            />
+            <i class="close-icon" data-feather="x"></i>
+          </div>
+        </div>
+      </div>
+      <!-- Page Header Ends-->
+
+      <!-- Page Body start -->
+      <div class="page-body-wrapper">
+        <!-- Page Sidebar Start-->
+        <div class="sidebar-wrapper">
+          <div>
+            <div class="logo-wrapper logo-wrapper-center">
+              <a href="/admin" data-bs-original-title="" title="">
+                <img
+                  class="img-fluid for-white logo-sidebar"
+                  src="/images/logo/svg/logo.svg"
+                  alt="logo"
+                />
+              </a>
+              <div class="back-btn">
+                <i class="fa fa-angle-left"></i>
+              </div>
+              <div class="toggle-sidebar">
+                <i
+                  class="ri-apps-2-line status_toggle middle sidebar-toggle"
+                ></i>
+              </div>
+            </div>
+            <div class="logo-icon-wrapper">
+              <a href="/admin">
+                <img
+                  class="img-fluid main-logo"
+                  src="/images/favicon.ico"
+                  alt="logo"
+                  style="background-color: var(--white); border-radius: 50%"
+                />
+              </a>
+            </div>
+            <nav class="sidebar-main">
+              <div class="left-arrow" id="left-arrow">
+                <i data-feather="arrow-left"></i>
+              </div>
+
+              <div id="sidebar-menu">
+                <ul class="sidebar-links" id="simple-bar">
+                  <li class="back-btn"></li>
+
+                  <li class="sidebar-list">
+                    <a
+                      class="sidebar-link sidebar-title link-nav"
+                      href="/admin"
+                    >
+                      <i class="ri-home-line"></i>
+                      <span>Dashboard</span>
+                    </a>
+                  </li>
+
+                  <li class="sidebar-list">
+                    <a
+                      class="linear-icon-link sidebar-link sidebar-title"
+                      href="javascript:void(0)"
+                    >
+                      <i class="ri-bowl-line"></i>
+                      <span>Sản phẩm</span>
+                    </a>
+                    <ul class="sidebar-submenu">
+                      <li>
+                        <a href="/admin/product">Danh sách sản phẩm</a>
+                      </li>
+
+                      <li>
+                        <a href="/admin/add-product">Thêm sản phẩm</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="sidebar-list">
+                    <a
+                      class="linear-icon-link sidebar-link sidebar-title"
+                      href="javascript:void(0)"
+                    >
+                      <i class="ri-layout-horizontal-line"></i>
+                      <span>Danh mục</span>
+                    </a>
+                    <ul class="sidebar-submenu">
+                      <li>
+                        <a href="/admin/category">Danh sách danh mục</a>
+                      </li>
+
+                      <li>
+                        <a href="/admin/add-category">Thêm danh mục</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="sidebar-list">
+                    <a
+                      class="linear-icon-link sidebar-link sidebar-title"
+                      href="javascript:void(0)"
+                    >
+                      <i class="ri-booklet-line"></i>
+                      <span>Combo</span>
+                    </a>
+                    <ul class="sidebar-submenu">
+                      <li>
+                        <a href="/admin/combo">Danh sách combo</a>
+                      </li>
+
+                      <li>
+                        <a href="/admin/add-combo">Thêm combo</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="sidebar-list">
+                    <a
+                      class="sidebar-link sidebar-title"
+                      href="javascript:void(0)"
+                    >
+                      <i class="ri-user-3-line"></i>
+                      <span>Users</span>
+                    </a>
+                    <ul class="sidebar-submenu">
+                      <li>
+                        <a href="all-users.html">All users</a>
+                      </li>
+                      <li>
+                        <a href="add-new-user.html">Add new user</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="sidebar-list">
+                    <a
+                      class="sidebar-link sidebar-title"
+                      href="javascript:void(0)"
+                    >
+                      <i class="ri-store-3-line"></i>
+                      <span>Orders</span>
+                    </a>
+                    <ul class="sidebar-submenu">
+                      <li>
+                        <a href="order-list.html">Order List</a>
+                      </li>
+                      <li>
+                        <a href="order-detail.html">Order Detail</a>
+                      </li>
+                      <li>
+                        <a href="order-tracking.html">Order Tracking</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <!-- <li class="sidebar-list">
+                    <a
+                      class="linear-icon-link sidebar-link sidebar-title"
+                      href="javascript:void(0)"
+                    >
+                      <i class="ri-list-settings-line"></i>
+                      <span>Attributes</span>
+                    </a>
+                    <ul class="sidebar-submenu">
+                      <li>
+                        <a href="attributes.html">Attributes</a>
+                      </li>
+
+                      <li>
+                        <a href="add-new-attribute.html">Add Attributes</a>
+                      </li>
+                    </ul>
+                  </li> -->
+                  <!-- <li class="sidebar-list">
+                    <a
+                      class="sidebar-link sidebar-title link-nav"
+                      href="restaurants.html"
+                    >
+                      <i class="ri-shopping-bag-2-line"></i>
+                      <span>Restaurants</span>
+                    </a>
+                  </li>
+
+                  <li class="sidebar-list">
+                    <a
+                      class="sidebar-link sidebar-title link-nav"
+                      href="drivers.html"
+                    >
+                      <i class="ri-car-line"></i>
+                      <span>Drivers</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-list">
+                    <a
+                      class="linear-icon-link sidebar-link sidebar-title"
+                      href="javascript:void(0)"
+                    >
+                      <i class="ri-bowl-line"></i>
+                      <span>Foods</span>
+                    </a>
+                    <ul class="sidebar-submenu">
+                      <li>
+                        <a href="foods.html">Food List</a>
+                      </li>
+
+                      <li>
+                        <a href="add-new-food.html">Create Food</a>
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li class="sidebar-list">
+                    <a
+                      class="sidebar-link sidebar-title"
+                      href="javascript:void(0)"
+                    >
+                      <i class="ri-user-3-line"></i>
+                      <span>Roles</span>
+                    </a>
+                    <ul class="sidebar-submenu">
+                      <li>
+                        <a href="role.html">All roles</a>
+                      </li>
+                      <li>
+                        <a href="create-roles.html">Create Role</a>
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li class="sidebar-list">
+                    <a
+                      class="sidebar-link sidebar-title link-nav"
+                      href="media.html"
+                    >
+                      <i class="ri-price-tag-3-line"></i>
+                      <span>Media</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-list">
+                    <a
+                      class="sidebar-link sidebar-title link-nav"
+                      href="live-traking.html"
+                    >
+                      <i class="ri-road-map-line"></i>
+                      <span>Live Traking</span>
+                    </a>
+                  </li>
+
+                  <li class="sidebar-list">
+                    <a
+                      class="linear-icon-link sidebar-link sidebar-title"
+                      href="javascript:void(0)"
+                    >
+                      <i class="ri-focus-3-line"></i>
+                      <span>Localization</span>
+                    </a>
+                    <ul class="sidebar-submenu">
+                      <li>
+                        <a href="translation.html">Translation</a>
+                      </li>
+
+                      <li>
+                        <a href="currency-rates.html">Currency Rates</a>
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li class="sidebar-list">
+                    <a
+                      class="linear-icon-link sidebar-link sidebar-title"
+                      href="javascript:void(0)"
+                    >
+                      <i class="ri-price-tag-3-line"></i>
+                      <span>Coupons</span>
+                    </a>
+                    <ul class="sidebar-submenu">
+                      <li>
+                        <a href="coupon-list.html">Coupon List</a>
+                      </li>
+
+                      <li>
+                        <a href="create-coupon.html">Create Coupon</a>
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li class="sidebar-list">
+                    <a
+                      class="sidebar-link sidebar-title link-nav"
+                      href="taxes.html"
+                    >
+                      <i class="ri-price-tag-3-line"></i>
+                      <span>Tax</span>
+                    </a>
+                  </li>
+
+                  <li class="sidebar-list">
+                    <a
+                      class="sidebar-link sidebar-title link-nav"
+                      href="product-review.html"
+                    >
+                      <i class="ri-star-line"></i>
+                      <span>Product Review</span>
+                    </a>
+                  </li>
+
+                  <li class="sidebar-list">
+                    <a
+                      class="sidebar-link sidebar-title link-nav"
+                      href="support-ticket.html"
+                    >
+                      <i class="ri-phone-line"></i>
+                      <span>Support Ticket</span>
+                    </a>
+                  </li>
+
+                  <li class="sidebar-list">
+                    <a
+                      class="linear-icon-link sidebar-link sidebar-title"
+                      href="javascript:void(0)"
+                    >
+                      <i class="ri-settings-line"></i>
+                      <span>Settings</span>
+                    </a>
+                    <ul class="sidebar-submenu">
+                      <li>
+                        <a href="profile-setting.html">Profile Setting</a>
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li class="sidebar-list">
+                    <a
+                      class="sidebar-link sidebar-title link-nav"
+                      href="reports.html"
+                    >
+                      <i class="ri-file-chart-line"></i>
+                      <span>Reports</span>
+                    </a>
+                  </li>
+
+                  <li class="sidebar-list">
+                    <a
+                      class="sidebar-link sidebar-title link-nav"
+                      href="list-page.html"
+                    >
+                      <i class="ri-list-check"></i>
+                      <span>List Page</span>
+                    </a>
+                  </li> -->
+                </ul>
+              </div>
+
+              <div class="right-arrow" id="right-arrow">
+                <i data-feather="arrow-right"></i>
+              </div>
+            </nav>
+          </div>
+        </div>
+        <!-- Page Sidebar Ends-->
+
+        <div class="page-body">
+          <!-- New Product Add Start -->
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-12">
+                <form
+                  id="productForm"
+                  action="/admin/update-product/<%= product.product_id %>"
+                  method="POST"
+                  enctype="multipart/form-data"
+                >
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="card">
+                        <div class="card-header">
+                          <h5>Thông tin sản phẩm</h5>
+                        </div>
+                        <div class="card-body">
+                          <div class="input-items">
+                            <div class="row gy-3">
+                              <div class="col-xl-6">
+                                <div class="input-box">
+                                  <h6>Tên món</h6>
+                                  <input
+                                    type="text"
+                                    name="product_name"
+                                    placeholder="Nhập tên món"
+                                    value="<%= product.product_name %>"
+                                  />
+                                </div>
+                              </div>
+                              <div class="col-xl-6">
+                                <div class="input-box">
+                                  <h6>Danh mục món</h6>
+                                  <select
+                                    id="categorySelect"
+                                    name="category_name"
+                                    class="js-example-basic-single w-100"
+                                  >
+                                    <option disabled selected>Chọn danh mục</option>
+                                    <% if (categories.categoriesALL && categories.categoriesALL.length > 0) { %>
+                                      <% categories.categoriesALL.forEach(category => { %>
+                                        <option 
+                                          value="<%= category.category_name %>" 
+                                          <%= category.category_id === product.category_id ? "selected" : "" %>
+                                        >
+                                          <%= category.category_name %>
+                                        </option>
+                                      <% }) %>
+                                    <% } else { %>
+                                      <option>Hiện không có danh mục nào!</option>
+                                    <% } %>
+                                  </select>
+                                </div>
+                              </div>
+                              
+                              <div class="col-xl-12 pizzaOption">
+                                <div class="input-box">
+                                  <h6>Dòng bánh Pizza</h6>
+                                  <select name="level_pizza" class="js-example-basic-single w-100">
+                                    <option disabled>Chọn phân loại dòng bánh pizza</option>
+                                    <option value="Truyền thống" <%= product.level_pizza == 'Truyền thống' ? 'selected' : '' %>>Truyền thống</option>
+                                    <option value="Cao cấp" <%= product.level_pizza == 'Cao cấp' ? 'selected' : '' %>>Cao cấp</option>
+                                    <option value="Siêu cao cấp" <%= product.level_pizza == 'Siêu cao cấp' ? 'selected' : '' %>>Siêu cao cấp</option>
+                                  </select>
+                                </div>
+                              </div>                              
+                              <div class="col-xl-12 pizzaOption">
+                                <div class="input-box">
+                                  <h6>Phân loại nhân bánh Pizza</h6>
+                                  <select id="types_pizza" name="types_pizza" class="js-example-basic-multiple w-100" multiple>
+                                    <option disabled>Chọn phân loại nhân bánh pizza</option>
+                                    <option value="Pizza thịt" <%= product.types_pizza.includes('Pizza thịt') ? 'selected' : '' %>>Pizza thịt</option>
+                                    <option value="Pizza hải sản" <%= product.types_pizza.includes('Pizza hải sản') ? 'selected' : '' %>>Pizza hải sản</option>
+                                    <option value="Pizza chay" <%= product.types_pizza.includes('Pizza chay') ? 'selected' : '' %>>Pizza chay</option>
+                                  </select>
+                                </div>
+                              </div>
+                              
+                              <div class="col-xl-12 pizzaOption">
+                                <div class="input-box">
+                                  <h6>Đế bánh pizza</h6>
+                                  <select
+                                    id="pizzaBases"
+                                    name="pizza_bases"
+                                    class="js-example-basic-multiple w-100"
+                                    multiple
+                                  >
+                                    <option disabled>
+                                      Chọn các loại đế bánh pizza
+                                    </option>
+                                    <option value="Mặc định" <%= product.base_name.includes('Mặc định') ? 'selected' : '' %> >Mặc định</option>
+                                    <option value="Mỏng giòn" <%= product.base_name.includes('Mỏng giòn') ? 'selected' : '' %> >Mỏng giòn</option>
+                                    <option value="Truyền thống" <%= product.base_name.includes('Truyền thống') ? 'selected' : '' %> >Truyền thống</option>
+                                    <option value="Xốp giòn" <%= product.base_name.includes('Xốp giòn') ? 'selected' : '' %> >Xốp giòn</option>
+                                  </select>
+                                </div>
+                              </div>
+                              <div class="col-12">
+                                <div class="input-box">
+                                  <h6>Tags</h6>
+                                  <input
+                                    type="text"
+                                    name="tags"
+                                    placeholder="Nhập nhãn của sản phẩm"
+                                    value="<%= product._tag %>"
+                                  />
+                                </div>
+                              </div>
+                              <div class="col-12">
+                                <div class="input-box">
+                                  <div class="icon-state">
+                                    <label class="switch-xsm mb-0">
+                                      <input type="hidden" id="spicyHidden" name="spicy" value="Không cay" />
+                                      <input
+                                        type="checkbox"
+                                        id="flexSwitchCheckDefault-1"
+                                        name="spicy"
+                                        value="Cay"
+                                        <%= product.spicy == "Cay" ? "checked" : "" %>
+                                      />
+                                      <span class="slider round"></span>
+                                    </label>
+                                    <label class="form-check-label" for="flexSwitchCheckDefault-1">Cay</label>
+                                  </div>
+                                </div>
+                              </div>
+                              
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="card">
+                        <div class="card-header">
+                          <h5>Mô tả sản phẩm</h5>
+                        </div>
+                        <div class="card-body">
+                          <div class="input-items">
+                            <div class="row gy-3">
+                              <div class="col-12">
+                                <div class="input-box">
+                                  <textarea name="product_description" id="editor">
+                                    <%= product.description %>
+                                  </textarea>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="card">
+                        <div class="card-header">
+                          <h5>Hình ảnh của sản phẩm</h5>
+                        </div>
+                        <div class="card-body">
+                          <div class="input-items">
+                            <div class="row gy-3">
+                              <div class="col-md-10 col-12">
+                                <div class="input-box">
+                                  <h6>Images</h6>
+                                  <input
+                                    type="file"
+                                    id="productImage"
+                                    name="product_image"
+                                    value="<%=product.image_name%>"
+                                    multiple
+                                  />
+                                </div>
+                              </div>
+                              <div
+                                class="col-md-2 col-12 d-flex justify-content-center align-items-center"
+                              >
+                                <img
+                                  src="<%= product.image_url %>"
+                                  class="img-fluid w-100 img-thumbnail oldImage"
+                                  alt="Ảnh sản phẩm"
+                                />
+                                <img
+                                  id="previewImage"
+                                  src="/images/product/default-product.jpg"
+                                  class="img-fluid w-100 img-thumbnail previewImage"
+                                  alt="Ảnh xem trước"
+                                  style="display: none"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="card">
+                        <div class="card-header">
+                          <h5>Kích thước và giá sản phẩm</h5>
+                        </div>
+                        <div class="card-body">
+                          <div class="input-items">
+                            <div class="row gy-3">
+                              <div class="col-xl-12">
+                                <div class="input-box">
+                                  <h6>Kích thước</h6>
+                                  <select
+                                    id="sizeSelect"
+                                    name="product_size"
+                                    class="js-example-basic-multiple w-100"
+                                    multiple
+                                  >
+                                  <% const selectedSizes = product.sizes.map(size => size.size_name.toLowerCase()); %>
+                                  <option value="Mặc định" <%= selectedSizes.includes("mặc định") ? "selected" : "" %> >Mặc định</option>
+                                  <option value="Nhỏ" <%= selectedSizes.includes("nhỏ") ? "selected" : "" %>>Nhỏ</option>
+                                  <option value="Vừa" <%= selectedSizes.includes("vừa") ? "selected" : "" %>>Vừa</option>
+                                  <option value="Lớn" <%= selectedSizes.includes("lớn") ? "selected" : "" %>>Lớn</option>
+                                  </select>
+                                </div>
+                              </div>
+                              <% 
+                              const getPrice = (sizeId) => {
+                                console.log('size_id:', sizeId);
+                                const size = product.sizes.find(s => s.size_id === sizeId);
+                                console.log('size:', size);
+                                return size ? `${parseInt(size.price).toLocaleString('vi-VN')} VNĐ` : '0 VNĐ';
+                              };
+                              %>
+                              <div class="col-xl-12 sizeOption" data-size="mặc định">
+                                <div class="input-box">
+                                  <h6>Giá</h6>
+                                  <input type="text" name="price_basicSize" value="<%= getPrice(1) %>" placeholder="0" />
+                                </div>
+                              </div>
+                    
+                              <div class="col-xl-12 sizeOption" data-size="nhỏ">
+                                <div class="input-box">
+                                  <h6>Giá size nhỏ</h6>
+                                  <input type="text" name="price_smallSize" value="<%= getPrice(2) %>" placeholder="0" />
+                                </div>
+                              </div>
+                    
+                              <div class="col-xl-12 sizeOption" data-size="vừa">
+                                <div class="input-box">
+                                  <h6>Giá size vừa</h6>
+                                  <input type="text" name="price_mediumSize" value="<%= getPrice(3) %>" placeholder="0" />
+                                </div>
+                              </div>
+                    
+                              <div class="col-xl-12 sizeOption" data-size="lớn">
+                                <div class="input-box">
+                                  <h6>Giá size lớn</h6>
+                                  <input type="text" name="price_largeSize" value="<%= getPrice(4) %>" placeholder="0" />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 d-flex justify-content-left">
+                      <div class="card">
+                        <button type="submit" class="btn restaurant-button">
+                          Cập nhật sản phẩm
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- New Product Add End -->
+
+          <!-- footer Start -->
+          <div class="container-fluid">
+            <footer class="footer">
+              <div class="row">
+                <div class="col-md-12 footer-copyright text-center">
+                  <p class="mb-0">Bản quyền 2025 thuộc về thuongpham09112000</p>
+                </div>
+              </div>
+            </footer>
+          </div>
+          <!-- footer En -->
+        </div>
+        <!-- Container-fluid End -->
+      </div>
+      <!-- Page Body End -->
+    </div>
+    <!-- page-wrapper End -->
+
+    <!-- Modal Start -->
+    <div
+      class="modal fade"
+      id="staticBackdrop"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body">
+            <h5 class="modal-title" id="staticBackdropLabel">Logging Out</h5>
+            <p>Are you sure you want to log out?</p>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+
+            <div class="button-box">
+              <button type="button" class="btn btn--no" data-bs-dismiss="modal">
+                No
+              </button>
+              <button type="button" class="btn btn--yes btn-primary">
+                Yes
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal End -->
+
+    <!-- latest js -->
+    <script src="/js/jquery-3.6.0.min.js"></script>
+
+    <!-- Bootstrap js -->
+    <script src="/js/bootstrap/bootstrap.bundle.min.js"></script>
+
+    <!-- feather icon js -->
+    <script src="/js/icons/feather-icon/feather.min.js"></script>
+    <script src="/js/icons/feather-icon/feather-icon.js"></script>
+
+    <!-- scrollbar simplebar js -->
+    <script src="/js/scrollbar/simplebar.js"></script>
+    <script src="/js/scrollbar/custom.js"></script>
+
+    <!-- Sidebar js -->
+    <script src="/js/config.js"></script>
+
+    <!-- bootstrap tag-input js -->
+    <script src="/js/bootstrap-tagsinput.min.js"></script>
+    <script src="/js/sidebar-menu.js"></script>
+
+    <!-- customizer js -->
+    <script src="/js/customizer.js"></script>
+
+    <!--Dropzon js -->
+    <script src="/js/dropzone/dropzone.js"></script>
+    <script src="/js/dropzone/dropzone-script.js"></script>
+
+    <!-- ck editor js -->
+    <script src="/js/ckeditor.js"></script>
+    <script src="/js/ckeditor-custom.js"></script>
+
+    <!-- select2 js -->
+    <script src="/js/select2.min.js"></script>
+    <script src="/js/select2-custom.js"></script>
+
+    <!-- Theme js -->
+    <script src="/js/script.js"></script>
+    <script src="/js/multer-image.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+      const flashMessages = {
+        success: "<%= success %>",
+        error: "<%= error %>",
+        info: "<%= info %>",
+      };
+    </script>
+    <script src="/js/customize-Swal.js"></script>
+    <script>
+      document
+        .getElementById("productForm")
+        .addEventListener("submit", function () {
+          let spicyCheckbox = document.getElementById(
+            "flexSwitchCheckDefault-1"
+          );
+          document.getElementById("spicyHidden").value = spicyCheckbox.checked
+            ? "1"
+            : "0";
+        });
+    </script>
+    <script>
+      document
+        .getElementById("productImage")
+        .addEventListener("change", function (event) {
+          const file = event.target.files[0];
+          if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+              const previewImage = document.getElementById("previewImage");
+              previewImage.src = e.target.result;
+              previewImage.style.display = "block";
+            };
+            reader.readAsDataURL(file);
+          }
+        });
+    </script>
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+  $("#categorySelect").select2({
+    placeholder: "Chọn danh mục món",
+    allowClear: true,
+    width: "resolve",
+  });
+
+  $("#categorySelect").on("change", function () {
+    let selectedValue = $(this).val().trim().toLowerCase();
+
+    let pizzaOptions = document.querySelectorAll(".pizzaOption");
+
+    if (selectedValue.includes("pizza")) {
+      pizzaOptions.forEach((option) => {
+        option.style.display = "block";
+        setTimeout(() => option.classList.add("show"), 10);
+      });
+    } else {
+      pizzaOptions.forEach((option) => {
+        option.classList.remove("show");
+        setTimeout(() => (option.style.display = "none"), 390);
+      });
+    }
+  });
+
+  $("#types_pizza").select2({
+    placeholder: "Chọn phân loại nhân bánh",
+    allowClear: true,
+    width: "resolve",
+  });
+
+  $("#pizzaBases").select2({
+    placeholder: "Chọn phân loại đế bánh",
+    allowClear: true,
+    width: "resolve",
+  });
+
+  $("#pizzaBases").on("change", function () {
+    let selectedValues = $(this).val() || [];
+    if (selectedValues.includes("Mặc định")) {
+      $(this).val(["Mặc định"]).trigger("change.select2");
+    } else {
+      $(this)
+        .find("option")
+        .filter(function () {
+          return $(this).val() === "Mặc định";
+        })
+        .prop("selected", false);
+
+      $(this).trigger("change.select2");
+    }
+  });
+  
+  $("#sizeSelect").select2({
+    placeholder: "Chọn kích thước",
+    allowClear: true,
+    width: "resolve",
+  });
+
+  $("#sizeSelect").on("change", function () {
+    let selectedValues = $(this).val() || [];
+
+    // Nếu chọn "Mặc định", chỉ giữ lại giá trị này
+    if (selectedValues.includes("Mặc định")) {
+      $(this).val(["Mặc định"]).trigger("change.select2");
+    } else {
+      $(this).find("option[value='Mặc định']").prop("selected", false);
+      $(this).trigger("change.select2");
+    }
+
+    updatePriceFields();
+  });
+
+  function updatePriceFields() {
+    let selectedValues = ($("#sizeSelect").val() || []).map(value =>
+      value.trim().toLowerCase()
+    );
+
+    $(".sizeOption").each(function () {
+      let sizeType = $(this).data("size").trim().toLowerCase();
+      if (selectedValues.includes(sizeType)) {
+        $(this).fadeIn(150).addClass("show");
+      } else {
+        $(this).fadeOut(150).removeClass("show");
+      }
+    });
+  }
+
+  updatePriceFields();
+  $("#categorySelect").trigger("change");
+});
+
+
+    </script>
+  </body>
+
+  <!-- Mirrored from themes.pixelstrap.net/zomo/landing/backend/add-new-product.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 23 Dec 2024 00:48:41 GMT -->
+</html>
