@@ -5,7 +5,7 @@ const Combo = require("../models/comboModel");
 const Size = require("../models/sizeModel.js");
 const PizzaCrust = require("../models/pizzaCrustModel.js");
 const cartService = require("./cartService");
-const transactionsService = require("./TransactionsService");
+const transactionsService = require("./transactionsService");
 const dayjs = require("dayjs");
 const utc = require("dayjs/plugin/utc");
 const timezone = require("dayjs/plugin/timezone");
@@ -14,10 +14,16 @@ dayjs.extend(utc);
 dayjs.extend(timezone);
 
 // Tạo đơn hàng từ giỏ hàng
-const createOrder = async (userId, recipientInfo, paymentMethod, order_type) => {
+const createOrder = async (
+  userId,
+  recipientInfo,
+  paymentMethod,
+  order_type
+) => {
   try {
     // Lấy thông tin giỏ hàng của người dùng
-    const { cartItems, grandTotal: originalGrandTotal } = await cartService.getCartByUserId(userId);
+    const { cartItems, grandTotal: originalGrandTotal } =
+      await cartService.getCartByUserId(userId);
 
     if (!cartItems || cartItems.length === 0) {
       throw new Error("Giỏ hàng trống, không thể tạo đơn hàng.");
@@ -29,15 +35,22 @@ const createOrder = async (userId, recipientInfo, paymentMethod, order_type) => 
 
     // Kiểm tra và xử lý delivery_time
     const now = dayjs().tz("Asia/Ho_Chi_Minh");
-    const minDeliveryTime = order_type === "Delivery" ? now.add(30, "minute") : now.add(15, "minute");
+    const minDeliveryTime =
+      order_type === "Delivery" ? now.add(30, "minute") : now.add(15, "minute");
 
     if (!recipientInfo.delivery_time) {
-      recipientInfo.delivery_time = minDeliveryTime.format("YYYY-MM-DD HH:mm:ss");
+      recipientInfo.delivery_time = minDeliveryTime.format(
+        "YYYY-MM-DD HH:mm:ss"
+      );
     } else {
-      const deliveryTime = dayjs(recipientInfo.delivery_time).tz("Asia/Ho_Chi_Minh");
+      const deliveryTime = dayjs(recipientInfo.delivery_time).tz(
+        "Asia/Ho_Chi_Minh"
+      );
       if (deliveryTime.isBefore(minDeliveryTime)) {
         throw new Error(
-          `Chúng tôi chỉ có thể ${order_type === "Delivery" ? "giao hàng" : "chuẩn bị đơn hàng"} cho bạn sớm nhất vào khoảng ${minDeliveryTime.format(
+          `Chúng tôi chỉ có thể ${
+            order_type === "Delivery" ? "giao hàng" : "chuẩn bị đơn hàng"
+          } cho bạn sớm nhất vào khoảng ${minDeliveryTime.format(
             "HH:mm:ss YYYY-MM-DD"
           )}`
         );
@@ -51,7 +64,10 @@ const createOrder = async (userId, recipientInfo, paymentMethod, order_type) => 
     }
 
     // Lưu thông tin người nhận
-    const recipientSaved = await Order.addOrderRecipient(orderId, recipientInfo);
+    const recipientSaved = await Order.addOrderRecipient(
+      orderId,
+      recipientInfo
+    );
     if (!recipientSaved) {
       throw new Error("Không thể lưu thông tin người nhận. Vui lòng thử lại.");
     }
@@ -69,7 +85,9 @@ const createOrder = async (userId, recipientInfo, paymentMethod, order_type) => 
           item.details.product.crust_id || null
         );
         if (!detailAdded) {
-          throw new Error(`Không thể thêm sản phẩm ${item.product_id} vào đơn hàng.`);
+          throw new Error(
+            `Không thể thêm sản phẩm ${item.product_id} vào đơn hàng.`
+          );
         }
       } else if (item.combo_id) {
         const comboDetailAdded = await Order.addOrderDetail(
@@ -83,7 +101,9 @@ const createOrder = async (userId, recipientInfo, paymentMethod, order_type) => 
           item.combo_id
         );
         if (!comboDetailAdded) {
-          throw new Error(`Không thể thêm combo ${item.combo_id} vào đơn hàng.`);
+          throw new Error(
+            `Không thể thêm combo ${item.combo_id} vào đơn hàng.`
+          );
         }
 
         // Thêm các sản phẩm trong combo vào OrderComboSelections
