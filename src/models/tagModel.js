@@ -123,7 +123,7 @@ class Tag {
   static async findTagIdByProductId(productId) {
     try {
       const [rows] = await database.execute(
-        "SELECT * FROM producttags WHERE product_id = ?",
+        "SELECT * FROM ProductTags WHERE product_id = ?",
         [productId]
       );
       return rows.length > 0 ? rows : [];

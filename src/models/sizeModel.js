@@ -21,16 +21,7 @@ class Size {
       );
     }
   }
-  // static async findByProductId(product_id) {
-  //   try {
-  //     const query = "SELECT * FROM productprices WHERE product_id = ?";
-  //     const [rows] = await database.execute(query, [product_id]);
-  //     return rows.length > 0 ? rows : [];
-  //   } catch (error) {
-  //     console.log("Lỗi khi truy vấn price trong CSDL" + error.message);
-  //     throw new Error("Lỗi khi truy vấn price trong CSDL");
-  //   }
-  // }
+
   static async findMultipleById(sizeIds) {
     try {
       if (!Array.isArray(sizeIds) || sizeIds.length === 0) {

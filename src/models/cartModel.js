@@ -32,7 +32,7 @@ class Cart {
       return rows;
     } catch (error) {
       console.log("Lỗi truy vấn giỏ hàng: " + error.message);
-      throw new Error("Lỗi khi truy vấn giỏ hàng từ CSDL: " + error.message);
+      throw new Error("Lỗi khi truy vấn giỏ hàng từ CSDL");
     }
   }
 
@@ -51,20 +51,40 @@ class Cart {
     }
   }
 
-  static async findByUserIdAndProductId(user_id, product_id) {
+  static async findProductCart(
+    user_id,
+    product_id,
+    size_id,
+    crust_id,
+    base_id
+  ) {
     try {
-      const [rows] = await database.execute(
-        "SELECT * FROM Cart WHERE user_id = ? AND product_id = ?",
-        [user_id, product_id]
-      );
-      if (rows.length === 0) {
-        return null;
+      let conditions = ["user_id = ?", "product_id = ?", "size_id = ?"];
+      let params = [user_id, product_id, size_id];
+      if (crust_id === null) {
+        conditions.push("crust_id IS NULL");
+      } else {
+        conditions.push("crust_id = ?");
+        params.push(crust_id);
       }
-      return rows[0];
+      if (base_id === null) {
+        conditions.push("base_id IS NULL");
+      } else {
+        conditions.push("base_id = ?");
+        params.push(base_id);
+      }
+      const query = `SELECT * FROM Cart WHERE ${conditions.join(" AND ")}`;
+
+      const [rows] = await database.execute(query, params);
+      if (rows.length > 0) {
+        return rows[0];
+      }
+      return rows.length > 0;
     } catch (error) {
       throw new Error("Lỗi khi truy vấn giỏ hàng từ CSDL: " + error.message);
     }
   }
+
   static async findByUserIdAndComboId(user_id, combo_id) {
     try {
       const [rows] = await database.execute(
@@ -79,57 +99,40 @@ class Cart {
       throw new Error("Lỗi khi truy vấn giỏ hàng từ CSDL: " + error.message);
     }
   }
-  static async updateById(cart_id, cartData) {
-    console.log(">>>>", cart_id, cartData);
 
+  static async updateByIds(cartUpdate) {
     try {
-      const fields = [];
-      const values = [];
-
-      if (cartData.user_id !== undefined) {
-        fields.push("user_id = ?");
-        values.push(cartData.user_id);
-      }
-      if (cartData.product_id !== undefined) {
-        fields.push("product_id = ?");
-        values.push(cartData.product_id);
-      }
-      if (cartData.combo_id !== undefined) {
-        fields.push("combo_id = ?");
-        values.push(cartData.combo_id);
-      }
-      if (cartData.size_id !== undefined) {
-        fields.push("size_id = ?");
-        values.push(cartData.size_id);
-      }
-      if (cartData.quantity !== undefined) {
-        fields.push("quantity = ?");
-        values.push(cartData.quantity);
-      }
-      if (cartData.crust_id !== undefined) {
-        fields.push("crust_id = ?");
-        values.push(cartData.crust_id);
-      }
-      if (cartData.base_id !== undefined) {
-        fields.push("base_id = ?");
-        values.push(cartData.base_id);
+      if (!Array.isArray(cartUpdate) || cartUpdate.length === 0) {
+        throw new Error("Dữ liệu cập nhật không hợp lệ!");
       }
 
-      if (fields.length === 0) {
-        throw new Error("Không có dữ liệu để cập nhật");
-      }
+      const ids = cartUpdate
+        .map((item) => database.escape(item.cart_id))
+        .join(", ");
 
-      fields.push("updated_at = CURRENT_TIMESTAMP");
-      values.push(cart_id);
+      const caseQuantity = cartUpdate
+        .map(
+          (item) =>
+            `WHEN ${database.escape(item.cart_id)} THEN ${database.escape(
+              item.quantity
+            )}`
+        )
+        .join(" ");
 
-      const [result] = await database.execute(
-        `UPDATE Cart SET ${fields.join(", ")} WHERE cart_id = ?`,
-        values
-      );
-      console.log(`Cập nhật giỏ hàng có id ${cart_id} thành công!`);
+      const query = `
+        UPDATE Cart
+        SET quantity = CASE cart_id
+          ${caseQuantity}
+        END,
+        updated_at = CURRENT_TIMESTAMP
+        WHERE cart_id IN (${ids});
+      `;
+
+      const [result] = await database.execute(query);
+      console.log("Cập nhật giỏ hàng thành công!", result);
       return result;
     } catch (error) {
-      console.error("Lỗi khi cập nhật giỏ hàng vào CSDL: " + error.message);
+      console.error("Lỗi khi cập nhật giỏ hàng: " + error.message);
       throw new Error("Lỗi khi cập nhật giỏ hàng");
     }
   }
@@ -147,7 +150,26 @@ class Cart {
       }
     } catch (error) {
       console.log("Lỗi khi xóa giỏ hàng: " + error.message);
-      throw new Error("Lỗi khi xóa giỏ hàng: " + error.message);
+      throw new Error("Lỗi khi xóa sản phẩm trong giỏ hàng khỏi CSDL");
+    }
+  }
+
+  static async deleteByIds(cart_ids) {
+    try {
+      const placeholders = cart_ids.map(() => "?").join(", ");
+      const [result] = await database.execute(
+        `DELETE FROM Cart WHERE cart_id IN (${placeholders})`,
+        cart_ids
+      );
+      if (result.affectedRows > 0) {
+        return true;
+      }
+      return false;
+    } catch (error) {
+      console.log("Lỗi khi xóa danh sách giỏ hàng: " + error.message);
+      throw new Error(
+        "Lỗi khi xóa danh sách sản phẩm trong giỏ hàng khỏi CSDL"
+      );
     }
   }
 
@@ -173,7 +195,7 @@ class Cart {
   // }) {
   //   try {
   //     const [result] = await database.execute(
-  //       `INSERT INTO CartComboSelections (cart_id, combo_id, product_id, quantity) 
+  //       `INSERT INTO CartComboSelections (cart_id, combo_id, product_id, quantity)
   //                VALUES (?, ?, ?, ?)`,
   //       [cart_id, combo_id, product_id, quantity]
   //     );
@@ -223,6 +245,23 @@ class Cart {
       const [rows] = await database.execute(
         "SELECT * FROM CartComboSelections WHERE cart_id = ?",
         [cart_id]
+      );
+      return rows;
+    } catch (error) {
+      console.log("Lỗi truy vấn combo trong giỏ hàng: " + error.message);
+      throw new Error(
+        "Lỗi khi truy vấn combo trong giỏ hàng từ CSDL: " + error.message
+      );
+    }
+  }
+
+  static async getComboSelectionsByCartIdS(cart_ids) {
+    try {
+      const [rows] = await database.execute(
+        `SELECT * FROM CartComboSelections WHERE cart_id IN (${cart_ids.map(
+          () => "?"
+        )})`,
+        cart_ids
       );
       return rows;
     } catch (error) {

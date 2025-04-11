@@ -1,4 +1,6 @@
 const categoryService = require("../services/categoryService.js");
+const authService = require("../services/authService.js");
+
 const categoryController = {
   async addCategory(req, res) {
     const isAdmin = req.originalUrl.startsWith("/admin");
@@ -24,12 +26,16 @@ const categoryController = {
     const isAdmin = req.originalUrl.startsWith("/admin");
     try {
       const result = await categoryService.getAllCategories();
-      categories = result.categoriesALL;
 
       if (isAdmin) {
-        return res.render("category", { title: "Danh mục", categories });
+        categories = result.categoriesALL;
+        const authData = await authService.getUserInformation(req.user.id);
+        const user = authData.user;
+        console.log("categories", categories);
+
+        return res.render("category", { title: "Danh mục", categories, user });
       }
-      return res.status(200).json(categories);
+      return res.status(200).json(result);
     } catch (error) {
       res.status(500).json({ error: error });
     }
@@ -39,11 +45,16 @@ const categoryController = {
     try {
       const result = await categoryService.getCategoryById(req.params.id);
       const category = result.category;
-
+      const authData = await authService.getUserInformation(req.user.id);
+      const user = authData.user;
       if (isAdmin) {
         console.log("category", category);
 
-        return res.render("update-category", { title: "Danh mục", category });
+        return res.render("update-category", {
+          title: "Danh mục",
+          category,
+          user,
+        });
       }
       return res.status(200).json(category);
     } catch (error) {

@@ -59,6 +59,7 @@ const addCombo = async (comboData, combo_image) => {
     }
 
     console.log("comboData.category_ids", comboData.category_ids);
+    console.log("comboData", comboData);
 
     // Xử lý thêm combo mới
     const newCombo = await Combo.create({
@@ -73,6 +74,12 @@ const addCombo = async (comboData, combo_image) => {
     //  Xủ lý thêm sản phẩm vào combo
     if (comboData.product_names && comboData.product_names.length > 0) {
       let productList = [];
+      const sizeMap = {
+        Lớn: 4,
+        "Mặc định": 1,
+        Nhỏ: 2,
+        Vừa: 3,
+      };
       const productIds = Object.keys(comboData)
         .filter((key) => key.startsWith("product_size-"))
         .map((key) => key.split("-")[1]);
@@ -80,15 +87,22 @@ const addCombo = async (comboData, combo_image) => {
       productIds.forEach((productId) => {
         const quantityKey = `quantity-${productId}`;
         const sizeKey = `product_size-${productId}`;
+
         if (comboData[quantityKey] && comboData[sizeKey]) {
+          let sizeValue = comboData[sizeKey];
+
+          // Kiểm tra và ánh xạ sang size_id hợp lệ
+          let sizeIdValue = sizeMap[sizeValue] || null;
+
           productList.push({
             productId: parseInt(productId, 10),
             quantity: parseInt(comboData[quantityKey], 10),
+            sizeId: sizeIdValue,
           });
         }
       });
       console.log("productList", productList);
-      //   await Combo.addMultipleProductsToCombo(comboId, productList);
+      await Combo.addMultipleProductsToCombo(comboId, productList);
       console.log("Thêm sản phẩm vào combo thành công");
     }
 
@@ -101,6 +115,7 @@ const addCombo = async (comboData, combo_image) => {
           categoriesList.push({
             categoryId: parseInt(categoryId, 10),
             quantity: parseInt(comboData[quantityKey], 10),
+            pizza_level: comboData.level_pizza || null,
           });
         }
       });
@@ -149,15 +164,15 @@ const getComboById = async (comboId) => {
     if (combo.image_url) {
       combo.image_name = combo.image_url.split("/").pop();
     } else {
-      combo.image_name = null; // Trường hợp không có ảnh
+      combo.image_name = null;
     }
 
     // Lọc danh sách tag_name
-    const comboTags = await Tag.findTagIdByComboId(comboId);
-    const tagIds = comboTags.map((tag) => tag.tag_id);
-    const tags = await Tag.findMultipleById(tagIds);
+    // const comboTags = await Tag.findTagIdByComboId(comboId);
+    // const tagIds = comboTags.map((tag) => tag.tag_id);
+    // const tags = await Tag.findMultipleById(tagIds);
 
-    combo._tag = tags.map((tag) => tag.tag_name);
+    // combo._tag = tags.map((tag) => tag.tag_name);
 
     console.log("Lấy combo có id:", comboId);
     return { message: "Lấy combo bằng id thành công!", combo };
@@ -273,7 +288,7 @@ const deleteCombo = async (comboId) => {
       }
     }
 
-    const response = await Combo.deleteOneById(comboId);
+    const response = await Combo.deleteById(comboId);
     console.log("Đã xóa combo có id:", comboId);
     return { success: response, message: "Xóa combo thành công!" };
   } catch (error) {
@@ -325,7 +340,7 @@ const deleteMultipleCombos = async (comboIds) => {
       }
     });
 
-    const result = await Combo.deleteMultipleById(comboIds);
+    const result = await Combo.deleteMultipleCombos(comboIds);
 
     if (!result) {
       throw new Error("Không tìm thấy combo phù hợp!");

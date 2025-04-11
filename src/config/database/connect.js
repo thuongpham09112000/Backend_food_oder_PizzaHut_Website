@@ -1,4 +1,4 @@
-require('dotenv').config();
+require("dotenv").config();
 const mysql = require("mysql2/promise");
 
 const database = mysql.createPool({
@@ -20,6 +20,8 @@ async function connect() {
     throw err;
   }
 }
+
+// connect();
 
 async function queryDatabase() {
   try {

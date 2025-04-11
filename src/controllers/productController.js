@@ -1,4 +1,5 @@
 const productService = require("../services/productService.js");
+const authService = require("../services/authService.js");
 const categoryService = require("../services/categoryService.js");
 const productController = {
   async addProduct(req, res) {
@@ -27,7 +28,11 @@ const productController = {
       let productData = null;
       if (!result || !result.products) {
         if (isAdmin) {
-          return res.render("products", { title: "Sản phẩm", productData });
+          return res.render("products", {
+            title: "Sản phẩm",
+            productData,
+            user,
+          });
         }
         return res
           .status(404)
@@ -45,7 +50,9 @@ const productController = {
       }));
 
       if (isAdmin) {
-        return res.render("products", { title: "Sản phẩm", productData });
+        const authData = await authService.getUserInformation(req.user.id);
+        const user = authData.user;
+        return res.render("products", { title: "Sản phẩm", productData, user });
       }
       return res
         .status(200)
@@ -59,19 +66,21 @@ const productController = {
     const isAdmin = req.originalUrl.startsWith("/admin");
     try {
       const result = await productService.getProductById(req.params.id);
-      const product = result.product;
-      const categories = await categoryService.getAllCategories();
-      console.log("categories", categories);
       if (isAdmin) {
-        console.log("Product", product);
+        const product = result.product;
+        const categories = await categoryService.getAllCategories();
+        const authData = await authService.getUserInformation(req.user.id);
+        const user = authData.user;
+        console.log("product", product);
 
         return res.render("update-product", {
           title: "Sản phẩm",
           product,
           categories,
+          user,
         });
       }
-      return res.status(200).json(product);
+      return res.status(200).json(result);
     } catch (error) {
       res.status(500).json({ message: error.message });
     }
@@ -137,7 +146,6 @@ const productController = {
       return res.status(500).json({ error: error });
     }
   },
-
   async updateStatusProduct(req, res) {
     const isAdmin = req.originalUrl.startsWith("/admin");
     try {

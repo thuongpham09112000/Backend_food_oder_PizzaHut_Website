@@ -197,8 +197,10 @@ const getProductById = async (productId) => {
     const pizzaBasesProduct = await PizzaBases.findBaseIdByProductId(productId);
     const baseIds = pizzaBasesProduct.map((base) => base.base_id);
     const pizzaBases = await PizzaBases.findMultipleById(baseIds);
-    const baseNames = pizzaBases.map((base) => base.base_name);
-    product.base_name = baseNames;
+    product.pizza_base = pizzaBases.map((base) => ({
+      base_id: base.base_id,
+      base_name: base.base_name,
+    }));
 
     // Lọc danh sách tag_name
     const productTags = await Tag.findTagIdByProductId(productId);
@@ -538,7 +540,6 @@ const deleteMultipleProducts = async (productIds) => {
 
 const updateStatus = async (statusData) => {
   try {
-    console.log("statusData", statusData);
     const validStatuses = ["Active", "Inactive"];
     if (!statusData.status || !validStatuses.includes(statusData.status)) {
       throw new Error("Trạng thái không hợp lệ!");
@@ -548,7 +549,10 @@ const updateStatus = async (statusData) => {
       success: result,
       message: "Cập nhật trạng thái sản phẩm thành công!",
     };
-  } catch (error) {}
+  } catch (error) {
+    console.error(error.message);
+    throw new Error("Lỗi cập nhật trạng thái sản phẩm!");
+  }
 };
 
 module.exports = {

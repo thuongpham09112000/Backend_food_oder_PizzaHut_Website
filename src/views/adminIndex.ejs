@@ -20,7 +20,7 @@
       sizes="48x48"
       href="/images/favicon.ico"
     />
-    <title>Dashboard | Pizzahut TN</title>
+    <title><%= title %> | Pizzahut TN</title>
 
     <!-- Google font-->
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
@@ -264,7 +264,7 @@
                   <li>
                     <a href="/admin/users">
                       <i data-feather="users"></i>
-                      <span>Users</span>
+                      <span>Khách hàng</span>
                     </a>
                   </li>
                   <li>
@@ -415,237 +415,23 @@
                   </li>
                   <li class="sidebar-list">
                     <a
-                      class="sidebar-link sidebar-title"
-                      href="javascript:void(0)"
+                      class="sidebar-link sidebar-title link-nav"
+                      href="/admin/users"
                     >
                       <i class="ri-user-3-line"></i>
-                      <span>Users</span>
+                      <span>Khách hàng</span>
                     </a>
-                    <ul class="sidebar-submenu">
-                      <li>
-                        <a href="all-users.html">All users</a>
-                      </li>
-                      <li>
-                        <a href="add-new-user.html">Add new user</a>
-                      </li>
-                    </ul>
                   </li>
                   <li class="sidebar-list">
                     <a
-                      class="sidebar-link sidebar-title"
-                      href="javascript:void(0)"
+                      class="sidebar-link sidebar-title link-nav"
+                      href="/admin/orders"
                     >
                       <i class="ri-store-3-line"></i>
                       <span>Orders</span>
                     </a>
-                    <ul class="sidebar-submenu">
-                      <li>
-                        <a href="order-list.html">Order List</a>
-                      </li>
-                      <li>
-                        <a href="order-detail.html">Order Detail</a>
-                      </li>
-                      <li>
-                        <a href="order-tracking.html">Order Tracking</a>
-                      </li>
-                    </ul>
                   </li>
-                  <!-- <li class="sidebar-list">
-                    <a
-                      class="linear-icon-link sidebar-link sidebar-title"
-                      href="javascript:void(0)"
-                    >
-                      <i class="ri-list-settings-line"></i>
-                      <span>Attributes</span>
-                    </a>
-                    <ul class="sidebar-submenu">
-                      <li>
-                        <a href="attributes.html">Attributes</a>
-                      </li>
-
-                      <li>
-                        <a href="add-new-attribute.html">Add Attributes</a>
-                      </li>
-                    </ul>
-                  </li> -->
-                  <!-- <li class="sidebar-list">
-                    <a
-                      class="sidebar-link sidebar-title link-nav"
-                      href="restaurants.html"
-                    >
-                      <i class="ri-shopping-bag-2-line"></i>
-                      <span>Restaurants</span>
-                    </a>
-                  </li>
-
-                  <li class="sidebar-list">
-                    <a
-                      class="sidebar-link sidebar-title link-nav"
-                      href="drivers.html"
-                    >
-                      <i class="ri-car-line"></i>
-                      <span>Drivers</span>
-                    </a>
-                  </li>
-                  <li class="sidebar-list">
-                    <a
-                      class="linear-icon-link sidebar-link sidebar-title"
-                      href="javascript:void(0)"
-                    >
-                      <i class="ri-bowl-line"></i>
-                      <span>Foods</span>
-                    </a>
-                    <ul class="sidebar-submenu">
-                      <li>
-                        <a href="foods.html">Food List</a>
-                      </li>
-
-                      <li>
-                        <a href="add-new-food.html">Create Food</a>
-                      </li>
-                    </ul>
-                  </li>
-
-                  <li class="sidebar-list">
-                    <a
-                      class="sidebar-link sidebar-title"
-                      href="javascript:void(0)"
-                    >
-                      <i class="ri-user-3-line"></i>
-                      <span>Roles</span>
-                    </a>
-                    <ul class="sidebar-submenu">
-                      <li>
-                        <a href="role.html">All roles</a>
-                      </li>
-                      <li>
-                        <a href="create-roles.html">Create Role</a>
-                      </li>
-                    </ul>
-                  </li>
-
-                  <li class="sidebar-list">
-                    <a
-                      class="sidebar-link sidebar-title link-nav"
-                      href="media.html"
-                    >
-                      <i class="ri-price-tag-3-line"></i>
-                      <span>Media</span>
-                    </a>
-                  </li>
-                  <li class="sidebar-list">
-                    <a
-                      class="sidebar-link sidebar-title link-nav"
-                      href="live-traking.html"
-                    >
-                      <i class="ri-road-map-line"></i>
-                      <span>Live Traking</span>
-                    </a>
-                  </li>
-
-                  <li class="sidebar-list">
-                    <a
-                      class="linear-icon-link sidebar-link sidebar-title"
-                      href="javascript:void(0)"
-                    >
-                      <i class="ri-focus-3-line"></i>
-                      <span>Localization</span>
-                    </a>
-                    <ul class="sidebar-submenu">
-                      <li>
-                        <a href="translation.html">Translation</a>
-                      </li>
-
-                      <li>
-                        <a href="currency-rates.html">Currency Rates</a>
-                      </li>
-                    </ul>
-                  </li>
-
-                  <li class="sidebar-list">
-                    <a
-                      class="linear-icon-link sidebar-link sidebar-title"
-                      href="javascript:void(0)"
-                    >
-                      <i class="ri-price-tag-3-line"></i>
-                      <span>Coupons</span>
-                    </a>
-                    <ul class="sidebar-submenu">
-                      <li>
-                        <a href="coupon-list.html">Coupon List</a>
-                      </li>
-
-                      <li>
-                        <a href="create-coupon.html">Create Coupon</a>
-                      </li>
-                    </ul>
-                  </li>
-
-                  <li class="sidebar-list">
-                    <a
-                      class="sidebar-link sidebar-title link-nav"
-                      href="taxes.html"
-                    >
-                      <i class="ri-price-tag-3-line"></i>
-                      <span>Tax</span>
-                    </a>
-                  </li>
-
-                  <li class="sidebar-list">
-                    <a
-                      class="sidebar-link sidebar-title link-nav"
-                      href="product-review.html"
-                    >
-                      <i class="ri-star-line"></i>
-                      <span>Product Review</span>
-                    </a>
-                  </li>
-
-                  <li class="sidebar-list">
-                    <a
-                      class="sidebar-link sidebar-title link-nav"
-                      href="support-ticket.html"
-                    >
-                      <i class="ri-phone-line"></i>
-                      <span>Support Ticket</span>
-                    </a>
-                  </li>
-
-                  <li class="sidebar-list">
-                    <a
-                      class="linear-icon-link sidebar-link sidebar-title"
-                      href="javascript:void(0)"
-                    >
-                      <i class="ri-settings-line"></i>
-                      <span>Settings</span>
-                    </a>
-                    <ul class="sidebar-submenu">
-                      <li>
-                        <a href="profile-setting.html">Profile Setting</a>
-                      </li>
-                    </ul>
-                  </li>
-
-                  <li class="sidebar-list">
-                    <a
-                      class="sidebar-link sidebar-title link-nav"
-                      href="reports.html"
-                    >
-                      <i class="ri-file-chart-line"></i>
-                      <span>Reports</span>
-                    </a>
-                  </li>
-
-                  <li class="sidebar-list">
-                    <a
-                      class="sidebar-link sidebar-title link-nav"
-                      href="list-page.html"
-                    >
-                      <i class="ri-list-check"></i>
-                      <span>List Page</span>
-                    </a>
-                  </li> -->
-                </ul>
+                </ul>  
               </div>
 
               <div class="right-arrow" id="right-arrow">
@@ -714,7 +500,7 @@
                                   </a>
                                 </div>
                                 <% }) %> <% } else { %>
-                                <span colspan="5"
+                                <span colspan="7"
                                   >Hiện không có danh mục nào!</span
                                 >
                                 <% } %>
@@ -1396,52 +1182,6 @@
     </div>
     <!-- page-wrapper End-->
 
-    <!-- Modal Start -->
-    <!-- <div
-      class="modal theme-modal fade"
-      id="staticBackdrop"
-      tabindex="-1"
-      role="dialog"
-      aria-modal="true"
-    >
-      <div class="modal-dialog modal-md modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5>Logging Out</h5>
-            <button
-              class="btn-close"
-              type="button"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            >
-              <i class="ri-close-line"></i>
-            </button>
-          </div>
-          <div class="modal-body">
-            <p class="mb-0">Are you sure you want to log out?</p>
-          </div>
-          <div class="modal-footer">
-            <button
-              class="btn btn-cancel"
-              type="button"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            >
-              No
-            </button>
-            <button
-              class="btn btn-submit"
-              type="submit"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            >
-              <a href="/admin/logout">Yes</a>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div> -->
-    <!-- Modal End -->
 
     <!-- latest js -->
     <script src="js/jquery-3.6.0.min.js"></script>

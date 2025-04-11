@@ -7519,7 +7519,7 @@ table.dataTable.no-footer {
     from(#f2a93e),
     to(#f07054)
   );
-  background: linear-gradient(to right, #f2a93e, #f07054);
+  background: linear-gradient(to right, var(--theme-color), #f07054);
   color: #fff !important;
   border-color: transparent;
 }
@@ -11210,6 +11210,7 @@ body.dark-only .order-left-image .order-image-contain p span {
 }
 body.dark-only .progtrckr li.progtrckr-todo:before {
   background-color: #282828;
+  border-radius: 50%;
 }
 body.dark-only .progtrckr li h5 {
   color: rgba(255, 255, 255, 0.6);

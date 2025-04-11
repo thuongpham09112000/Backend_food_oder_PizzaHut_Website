@@ -14,19 +14,6 @@ class Combo {
     }
   }
 
-  // Thêm sản phẩm vào combo
-  static async addProductToCombo(comboId, productId, size_id, quantity = 1) {
-    try {
-      await database.execute(
-        "INSERT INTO ComboProducts (combo_id, product_id, quantity) VALUES (?, ?, ?)",
-        [comboId, productId, size_id, quantity]
-      );
-      return true;
-    } catch (error) {
-      throw new Error("Lỗi khi thêm sản phẩm vào combo: " + error.message);
-    }
-  }
-
   // Thêm nhiều sản phẩm vào combo
   static async addMultipleProductsToCombo(comboId, products) {
     if (!Array.isArray(products) || products.length === 0) {
@@ -34,12 +21,13 @@ class Combo {
     }
 
     try {
-      const values = products.map(() => "(?, ?, ?)").join(",");
-      const query = `INSERT INTO ComboProducts (combo_id, product_id, quantity) VALUES ${values}`;
+      const values = products.map(() => "(?, ?, ?, ?)").join(",");
+      const query = `INSERT INTO ComboProducts (combo_id, product_id, size_id, quantity) VALUES ${values}`;
 
-      const params = products.flatMap(({ productId, quantity }) => [
+      const params = products.flatMap(({ productId, sizeId, quantity }) => [
         comboId,
         productId,
+        sizeId || 1,
         quantity || 1,
       ]);
 
@@ -47,24 +35,13 @@ class Combo {
 
       return true;
     } catch (error) {
-      throw new Error(
-        "Lỗi khi thêm nhiều sản phẩm vào combo: " + error.message
+      console.log(
+        "Lỗi khi thêm nhiều sản phẩm vào combo vào CSDL:" + error.message
       );
+      throw new Error("Lỗi khi thêm nhiều sản phẩm vào combo vào CSDL");
     }
   }
 
-  // Thêm nhóm sản phẩm vào combo
-  static async addProductGroupToCombo(comboId, categoryId, quantity = 1) {
-    try {
-      const [result] = await database.execute(
-        "INSERT INTO ComboProductGroups (combo_id, category_id, quantity) VALUES (?, ?, ?)",
-        [comboId, categoryId, quantity]
-      );
-      return { groupId: result.insertId, comboId, categoryId, quantity };
-    } catch (error) {
-      throw new Error("Lỗi khi thêm nhóm sản phẩm vào combo: " + error.message);
-    }
-  }
   // Thêm nhiều nhóm sản phẩm vào combo
   static async addMultipleProductGroupsToCombo(comboId, productGroups) {
     if (!Array.isArray(productGroups) || productGroups.length === 0) {
@@ -72,14 +49,17 @@ class Combo {
     }
 
     try {
-      const values = productGroups.map(() => "(?, ?, ?)").join(",");
-      const query = `INSERT INTO ComboProductGroups (combo_id, category_id, quantity) VALUES ${values}`;
+      const values = productGroups.map(() => "(?, ?, ?, ?)").join(",");
+      const query = `INSERT INTO ComboProductGroups (combo_id, category_id, pizza_level, quantity) VALUES ${values}`;
 
-      const params = productGroups.flatMap(({ categoryId, quantity }) => [
-        comboId,
-        categoryId,
-        quantity || 1,
-      ]);
+      const params = productGroups.flatMap(
+        ({ categoryId, pizza_level, quantity }) => [
+          comboId,
+          categoryId,
+          pizza_level || null,
+          quantity || 1,
+        ]
+      );
 
       const [result] = await database.execute(query, params);
 
@@ -91,7 +71,7 @@ class Combo {
     }
   }
 
-  static async findCombosById(id) {
+  static async findById(id) {
     try {
       const [rows] = await database.execute(
         "SELECT * FROM Combos WHERE combo_id = ?",
@@ -99,7 +79,24 @@ class Combo {
       );
       return rows.length ? rows[0] : null;
     } catch (error) {
-      throw new Error("Lỗi khi truy vấn combo từ CSDL: " + error.message);
+      console.error("Lỗi khi truy vấn combo từ CSDL:", error.message);
+      throw new Error("Lỗi khi truy vấn combo từ CSDL");
+    }
+  }
+
+  static async findByIds(ids) {
+    if (!Array.isArray(ids) || ids.length === 0) {
+      throw new Error("Danh sách ID không hợp lệ!");
+    }
+
+    try {
+      const placeholders = ids.map(() => "?").join(",");
+      const query = `SELECT * FROM Combos WHERE combo_id IN (${placeholders})`;
+      const [rows] = await database.execute(query, ids);
+      return rows;
+    } catch (error) {
+      console.error("Lỗi khi truy vấn combo từ CSDL:", error.message);
+      throw new Error("Lỗi khi truy vấn combo từ CSDL");
     }
   }
 
@@ -172,17 +169,27 @@ class Combo {
     }
   }
 
-  static async findProductsByComboId(comboId) {
+  static async deleteMultipleCombos(ids) {
     try {
-      const [rows] = await database.execute(
-        `SELECT p.* FROM Products p 
-                 JOIN ComboProducts cp ON p.product_id = cp.product_id 
-                 WHERE cp.combo_id = ?`,
-        [comboId]
+      const placeholders = ids.map(() => "?").join(",");
+      await database.execute(
+        `DELETE FROM Combos WHERE combo_id IN (${placeholders})`,
+        ids
       );
-      return rows;
+      return true;
     } catch (error) {
-      throw new Error("Lỗi khi truy vấn sản phẩm của combo: " + error.message);
+      throw new Error("Lỗi khi xóa nhiều combo trong CSDL: " + error.message);
+    }
+  }
+  static async updateStatus(id, status) {
+    try {
+      const [result] = await database.execute(
+        "UPDATE Combos SET status = ? WHERE combo_id = ?",
+        [status, id]
+      );
+      return result.affectedRows > 0;
+    } catch (error) {
+      throw new Error("Lỗi khi cập nhật trạng thái combo: " + error.message);
     }
   }
 }

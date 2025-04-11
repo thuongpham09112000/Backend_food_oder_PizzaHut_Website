@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <!-- Mirrored from themes.pixelstrap.net/zomo/landing/backend/order-detail.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 23 Dec 2024 00:48:44 GMT -->
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Zomo admin is super flexible, powerful, clean &amp; modern responsive bootstrap 5 admin template with unlimited possibilities."
+    />
+    <meta
+      name="keywords"
+      content="admin template,Zomo admin template, dashboard template, flat admin template, responsive admin template, web app"
+    />
+    <meta name="author" content="pixelstrap" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="48x48"
+      href="/images/favicon.ico"
+    />
+    <title><%= title %> | Pizzahut TN</title>
+
+    <!-- Google font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com/" />
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <!-- Fontawesome css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/css/vendors/font-awesome.css"
+    />
+
+    <!-- Linear Icon css -->
+    <link rel="stylesheet" href="/css/linearicon.css" />
+
+    <!-- Select2 css -->
+    <link rel="stylesheet" type="text/css" href="/css/select2.min.css" />
+
+    <!-- Themify icon css -->
+    <link rel="stylesheet" type="text/css" href="/css/vendors/themify.css" />
+
+    <!-- Feather icon css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/css/vendors/feather-icon.css"
+    />
+
+    <!-- remixicon css -->
+    <link rel="stylesheet" type="text/css" href="/css/remixicon.css" />
+
+    <!-- Plugins css -->
+    <link rel="stylesheet" type="text/css" href="/css/vendors/scrollbar.css" />
+    <link rel="stylesheet" type="text/css" href="/css/vendors/animate.css" />
+
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" type="text/css" href="/css/vendors/bootstrap.css" />
+
+    <!-- App css -->
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+  </head>
+
+  <body>
+    <!-- tap on top start -->
+    <div class="tap-top">
+      <i class="ri-arrow-up-double-fill"></i>
+    </div>
+    <!-- tap on tap end -->
+
+    <!-- loader start -->
+    <div class="loader-wrapper">
+      <img src="/images/loader.gif" alt="" />
+    </div>
+    <!-- loader end -->
+
+    <!-- page-wrapper Start -->
+    <div class="page-wrapper compact-wrapper" id="pageWrapper">
+      <!-- Page Header Start-->
+      <div class="page-header">
+        <div class="header-wrapper m-0">
+          <div class="header-logo-wrapper p-0">
+            <div class="logo-wrapper">
+              <a href="/admin">
+                <img
+                  class="img-fluid main-logo"
+                  src="/images/logo/svg/logo.svg"
+                  alt="logo"
+                />
+                <img
+                  class="img-fluid white-logo"
+                  src="/images/logo/svg/logo-light.svg"
+                  alt="logo"
+                />
+              </a>
+            </div>
+            <div class="toggle-sidebar">
+              <i
+                class="status_toggle middle sidebar-toggle"
+                data-feather="align-center"
+              ></i>
+              <a href="/admin">
+                <img
+                  class="img-fluid for-light"
+                  src="/images/logo/svg/logo.svg"
+                  alt="logo"
+                />
+                <img
+                  class="img-fluid for-dark"
+                  src="/images/logo/svg/logo-light.svg"
+                  alt="logo"
+                />
+              </a>
+            </div>
+          </div>
+          <div class="welcome-title">
+            <h5>
+              For the love of pizza!!!
+              <img src="/images/header.gif" alt="" />
+            </h5>
+            <span>
+              Thỏa thích vị giác của bạn với những chiếc pizza ngon nhất của
+              chúng tôi!!!
+            </span>
+          </div>
+          <div class="nav-right col-xl-6 col-5 pull-right right-header p-0">
+            <ul class="nav-menus">
+              <li class="search-icon">
+                <span class="header-search">
+                  <i class="ri-search-line"></i>
+                </span>
+              </li>
+              <!-- <li class="onhover-dropdown">
+                <div class="notification-box">
+                  <i class="ri-notification-line"></i>
+                  <span class="badge rounded-pill badge-theme">4</span>
+                </div>
+                <ul class="notification-dropdown onhover-show-div">
+                  <li>
+                    <i class="ri-notification-line"></i>
+                    <h4 class="mb-0">Notitications</h4>
+                  </li>
+                  <li>
+                    <p>
+                      <i class="fa fa-circle me-2 font-primary"></i>Delivery
+                      processing <span class="pull-right">10 min.</span>
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <i class="fa fa-circle me-2 font-success"></i>Order
+                      Complete<span class="pull-right">1 hr</span>
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <i class="fa fa-circle me-2 font-info"></i>Tickets
+                      Generated<span class="pull-right">3 hr</span>
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <i class="fa fa-circle me-2 font-danger"></i>Delivery
+                      Complete<span class="pull-right">6 hr</span>
+                    </p>
+                  </li>
+                  <li>
+                    <a class="btn btn-primary" href="javascript:void(0)"
+                      >Check all notification</a
+                    >
+                  </li>
+                </ul>
+              </li> -->
+              <!-- <li class="onhover-dropdown">
+                <div class="messages-box">
+                  <i class="ri-message-3-line"></i>
+                </div>
+                <ul class="messages-dropdown onhover-show-div">
+                  <li>
+                    <i class="ri-message-3-line"></i>
+                    <h4 class="mb-0">Messages</h4>
+                  </li>
+                  <li>
+                    <div class="d-flex align-items-center gap-2">
+                      <img src="/images/user/1.jpg" alt="" />
+                      <div>
+                        <h5>Nullam tempor</h5>
+                        <p>Curabitur facilisis erat viverra.</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="d-flex align-items-center gap-2">
+                      <img src="/images/user/2.jpg" alt="" />
+                      <div>
+                        <h5>Nullam tempor</h5>
+                        <p>Curabitur facilisis erat viverra.</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="d-flex align-items-center gap-2">
+                      <img src="/images/user/3.jpg" alt="" />
+                      <div>
+                        <h5>Nullam tempor</h5>
+                        <p>Curabitur facilisis erat viverra.</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="d-flex align-items-center gap-2">
+                      <img src="/images/user/4.jpg" alt="" />
+                      <div>
+                        <h5>Nullam tempor</h5>
+                        <p>Curabitur facilisis erat viverra.</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <a class="btn btn-primary" href="javascript:void(0)"
+                      >Go to Inbox</a
+                    >
+                  </li>
+                </ul>
+              </li> -->
+              <li>
+                <div class="mode">
+                  <i class="ri-moon-line"></i>
+                </div>
+              </li>
+              <li class="profile-nav onhover-dropdown pe-0 me-0">
+                <div class="media profile-media">
+                  <!-- <img
+                    class="user-profile rounded-circle"
+                    src="/images/users/4.jpg"
+                    alt=""
+                  /> -->
+                  <div class="user-name-hide media-body">
+                    <span><%=user.full_name%></span>
+                    <p class="mb-0 font-roboto">
+                      <%=user.role%><i class="middle ri-arrow-down-s-line"></i>
+                    </p>
+                  </div>
+                </div>
+                <ul class="profile-dropdown onhover-show-div">
+                  <li>
+                    <a href="/admin/users">
+                      <i data-feather="users"></i>
+                      <span>Khách hàng</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="order-list.html">
+                      <i data-feather="archive"></i>
+                      <span>Orders</span>
+                    </a>
+                  </li>
+                  <!-- <li>
+                    <a href="support-ticket.html">
+                      <i data-feather="phone"></i>
+                      <span>Spports Tickets</span>
+                    </a>
+                  </li> -->
+                  <!-- <li>
+                    <a href="profile-setting.html">
+                      <i data-feather="settings"></i>
+                      <span>Settings</span>
+                    </a>
+                  </li> -->
+                  <li>
+                    <a href="#" id="logout-link">
+                      <i data-feather="log-out"></i>
+                      <span>Log out</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="input-box">
+            <i class="ri-search-line"></i>
+            <input
+              class="search-box"
+              type="search"
+              placeholder="What are you looking for?"
+            />
+            <i class="close-icon" data-feather="x"></i>
+          </div>
+        </div>
+      </div>
+      <!-- Page Header Ends-->
+
+      <!-- Page Body Start-->
+      <div class="page-body-wrapper">
+        <!-- Page Sidebar Start-->
+        <div class="sidebar-wrapper">
+            <div>
+              <div class="logo-wrapper logo-wrapper-center">
+                <a href="/admin" data-bs-original-title="" title="">
+                  <img
+                    class="img-fluid for-white logo-sidebar"
+                    src="/images/logo/svg/logo.svg"
+                    alt="logo"
+                  />
+                </a>
+                <div class="back-btn">
+                  <i class="fa fa-angle-left"></i>
+                </div>
+                <div class="toggle-sidebar">
+                  <i
+                    class="ri-apps-2-line status_toggle middle sidebar-toggle"
+                  ></i>
+                </div>
+              </div>
+              <div class="logo-icon-wrapper">
+                <a href="/admin">
+                  <img
+                    class="img-fluid main-logo"
+                    src="/images/favicon.ico"
+                    alt="logo"
+                    style="background-color: var(--white); border-radius: 50%"
+                  />
+                </a>
+              </div>
+              <nav class="sidebar-main">
+                <div class="left-arrow" id="left-arrow">
+                  <i data-feather="arrow-left"></i>
+                </div>
+  
+                <div id="sidebar-menu">
+                  <ul class="sidebar-links" id="simple-bar">
+                    <li class="back-btn"></li>
+  
+                    <li class="sidebar-list">
+                      <a
+                        class="sidebar-link sidebar-title link-nav"
+                        href="/admin"
+                      >
+                        <i class="ri-home-line"></i>
+                        <span>Dashboard</span>
+                      </a>
+                    </li>
+  
+                    <li class="sidebar-list">
+                      <a
+                        class="linear-icon-link sidebar-link sidebar-title"
+                        href="javascript:void(0)"
+                      >
+                        <i class="ri-bowl-line"></i>
+                        <span>Sản phẩm</span>
+                      </a>
+                      <ul class="sidebar-submenu">
+                        <li>
+                          <a href="/admin/product">Danh sách sản phẩm</a>
+                        </li>
+  
+                        <li>
+                          <a href="/admin/add-product">Thêm sản phẩm</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="sidebar-list">
+                      <a
+                        class="linear-icon-link sidebar-link sidebar-title"
+                        href="javascript:void(0)"
+                      >
+                        <i class="ri-layout-horizontal-line"></i>
+                        <span>Danh mục</span>
+                      </a>
+                      <ul class="sidebar-submenu">
+                        <li>
+                          <a href="/admin/category">Danh sách danh mục</a>
+                        </li>
+  
+                        <li>
+                          <a href="/admin/add-category">Thêm danh mục</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="sidebar-list">
+                      <a
+                        class="linear-icon-link sidebar-link sidebar-title"
+                        href="javascript:void(0)"
+                      >
+                        <i class="ri-booklet-line"></i>
+                        <span>Combo</span>
+                      </a>
+                      <ul class="sidebar-submenu">
+                        <li>
+                          <a href="/admin/combo">Danh sách combo</a>
+                        </li>
+  
+                        <li>
+                          <a href="/admin/add-combo">Thêm combo</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="sidebar-list">
+                      <a
+                        class="sidebar-link sidebar-title link-nav"
+                        href="/admin/users"
+                      >
+                        <i class="ri-user-3-line"></i>
+                        <span>Khách hàng</span>
+                      </a>
+                    </li>
+                    <li class="sidebar-list">
+                      <a
+                        class="sidebar-link sidebar-title link-nav"
+                        href="/admin/orders"
+                      >
+                        <i class="ri-store-3-line"></i>
+                        <span>Orders</span>
+                      </a>
+                    </li>
+                  </ul>  
+                </div>
+  
+                <div class="right-arrow" id="right-arrow">
+                  <i data-feather="arrow-right"></i>
+                </div>
+              </nav>
+            </div>
+          </div>
+          <!-- Page Sidebar Ends-->
+
+        <!-- tracking section start -->
+        <div class="page-body">
+          <!-- tracking table start -->
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-xl-12">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-12">
+                        <ul
+                          class="nav setting-main-box driver-main-box sticky theme-scrollbar"
+                          id="v-pills-tab"
+                          role="tablist"
+                          aria-orientation="vertical"
+                        >
+                          <li>
+                            <button
+                              class="nav-link active"
+                              id="Settings-tab"
+                              data-bs-toggle="pill"
+                              data-bs-target="#Settings"
+                              role="tab"
+                              aria-controls="Settings"
+                              aria-selected="true"
+                            >
+                              <i class="ri-settings-line"></i>Trạng thái đơn
+                              hàng
+                            </button>
+                          </li>
+                          <li>
+                            <button
+                              class="nav-link"
+                              id="Info-tab"
+                              data-bs-toggle="pill"
+                              data-bs-target="#Info"
+                              role="tab"
+                              aria-controls="Info"
+                              aria-selected="false"
+                            >
+                              <i class="ri-information-2-line"></i>Chi tiết đơn
+                              hàng
+                            </button>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="col-12">
+                        <div class="restaurant-tab">
+                          <div class="tab-content" id="v-pills-tabContent">
+                            <div
+                              class="tab-pane fade show active"
+                              id="Settings"
+                              role="tabpanel"
+                              aria-labelledby="Settings-tab"
+                            >
+                              <div class="input-items">
+                                <div class="row gy-3">
+                                  <div class="col-12">
+                                    <div class="input-box driver-details-box">
+                                      <h6>Đơn hàng</h6>
+                                      <div class="driver-details-item">
+                                        <div>
+                                          <div>
+                                            <p>Khách hàng :</p>
+                                            <h5>
+                                              <%=order.recipientInfo.full_name%>
+                                            </h5>
+                                          </div>
+                                          <div>
+                                            <p>Thời gian dự kiến :</p>
+                                            <h5>
+                                              <% if (order.order_type === 'Pick up') { %>
+                                                15 phút
+                                              <% } else if (order.order_type === 'Delivery') { %>
+                                                30 phút
+                                              <% } else { %>
+                                                Không xác định
+                                              <% } %>
+                                            </h5>
+                                          </div>                                          
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-12">
+                                    <div class="input-box driver-details-box">
+                                      <h6>Trạng thái</h6>                        
+                                      <!-- Dropdown thay đổi trạng thái -->
+                                      <form id="orderStatusForm-<%= order.order_id %>" action="/admin/orders/<%= order.order_id %>/update-status" method="POST">
+                                        <input type="hidden" name="order_id" value="<%= order.order_id %>">
+                                        <select 
+                                          name="order_status" 
+                                          class="js-example-basic-single w-100 status-select" 
+                                          data-minimum-results-for-search="Infinity"
+                                          onchange="confirmStatusChange(event, <%= order.order_id %>)"
+                                        >
+                                          <% 
+                                            const statusOptions = {
+                                              'Pending': 'Chờ xác nhận',
+                                              'Processing': 'Đang xử lý',
+                                              'Delivering': 'Đang giao hàng',
+                                              'Completed': 'Hoàn tất',
+                                              'Cancelled': 'Đã hủy',
+                                              'Done': 'Đã hoàn thành'
+                                            };
+                                            for (let key in statusOptions) { 
+                                          %>
+                                            <option value="<%= key %>" <%= order.order_status === key ? 'selected' : '' %>>
+                                              <%= statusOptions[key] %>
+                                            </option>
+                                          <% } %>
+                                        </select>
+                                      </form>
+                                      <!-- Danh sách điểm giao hàng -->
+                                      <ul class="delivery-list">
+                                        <li>
+                                          <img src="/images/svg/driver.svg" alt="" />
+                                          <div>
+                                            <h5>Địa chỉ giao hàng</h5>
+                                            <p><%= order.recipientInfo.delivery_address %></p>
+                                          </div>
+                                        </li>
+                                        <li>
+                                          <img src="/images/svg/user-map.svg" alt="" />
+                                          <div>
+                                            <h5>Thôn tin liên hệ</h5>
+                                            <p><%= order.recipientInfo.phone_number%></p>
+                                          </div>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                  
+                                  <% 
+                                  const statusLabels = {
+                                    'Pending': 'Chờ xác nhận',
+                                    'Processing': 'Đang xử lý',
+                                    'Delivering': 'Đang giao hàng',
+                                    'Completed': 'Hoàn tất',
+                                    'Cancelled': 'Đã hủy',
+                                    'Done': 'Đã hoàn thành'
+                                  };
+                                
+                                  let statusSteps = [];
+                                
+                                  if (order.order_status === 'Cancelled') {
+                                    // TH3: Đã hủy
+                                    statusSteps = ['Cancelled'];
+                                  } else if (order.order_status === 'Done') {
+                                    // TH2: Đã hoàn thành
+                                    statusSteps = ['Done'];
+                                  } else {
+                                    // TH1: Quy trình bình thường
+                                    statusSteps = ['Pending', 'Processing', 'Delivering', 'Completed'];
+                                  }
+                                
+                                  const currentIndex = Math.max(0, statusSteps.indexOf(order.order_status || 'Pending'));
+                                %>
+                                
+                                <ol class="progtrckr">
+                                  <% for (let i = 0; i < statusSteps.length; i++) { %>
+                                    <li class="<%= i <= currentIndex ? 'progtrckr-done' : 'progtrckr-todo' %>">
+                                      <h5><%= statusLabels[statusSteps[i]] %></h5>
+                                      <h6><%= i <= currentIndex ? 'Hoàn thành' : 'Đang chờ' %></h6>
+                                    </li>
+                                  <% } %>
+                                </ol>                                                      
+                                
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="tab-pane fade"
+                              id="Info"
+                              role="tabpanel"
+                              aria-labelledby="Info-tab"
+                            >
+                              <div class="checkout-detail">
+                                <!-- Địa chỉ giao hàng -->
+                                <div class="cart-address-box">
+                                  <div class="add-img">
+                                    <img
+                                      class="img-fluid img sm-size"
+                                      src="/images/svg/location.svg"
+                                      alt="rp1"
+                                    />
+                                  </div>
+                                  <div class="add-content">
+                                    <div
+                                      class="d-flex align-items-center justify-content-between"
+                                    >
+                                      <h5 class="deliver-place">
+                                        Giao hàng cho: <%=
+                                        order.recipientInfo.full_name %>
+                                        <i class="ri-check-line"></i>
+                                      </h5>
+                                    </div>
+                                    <h6
+                                      class="address mt-sm-2 mt-1 content-color"
+                                    >
+                                      <%= order.recipientInfo.delivery_address
+                                      %><br />
+                                      SĐT: <%= order.recipientInfo.phone_number
+                                      %><br />
+                                      Thời gian giao: <%= new
+                                      Date(order.recipientInfo.delivery_time).toLocaleString('vi-VN',
+                                      {hour: '2-digit', minute: '2-digit', day:
+                                      '2-digit', month: '2-digit', year:
+                                      'numeric', hour12: false}) %><br />
+                                      Ghi chú: <%= order.recipientInfo.note %>
+                                    </h6>
+                                  </div>
+                                </div>
+
+                                <!-- Phương thức thanh toán -->
+                                <div class="cart-address-box mt-3">
+                                  <div class="add-img">
+                                    <img
+                                      class="img-fluid img sm-size"
+                                      src="/images/svg/wallet-add.svg"
+                                      alt="rp1"
+                                    />
+                                  </div>
+                                  <div class="add-content">
+                                    <div
+                                      class="d-flex align-items-center justify-content-between"
+                                    >
+                                      <h5 class="deliver-place">
+                                        Phương thức thanh toán:
+                                        <i class="ri-check-line"></i>
+                                      </h5>
+                                    </div>
+                                    <h6
+                                      class="address mt-sm-2 mt-1 content-color"
+                                    >
+                                      <%= order.transactions[0].payment_method
+                                      %> - Trạng thái: <%=
+                                      order.transactions[0].status %>
+                                    </h6>
+                                  </div>
+                                </div>
+
+                                <!-- Danh sách sản phẩm -->
+                                <ul>
+                                    <% order.orderDetails.forEach(function(detail) { %>
+                                    <li>
+                                        <div class="horizontal-product-box d-flex mb-3">
+                                        <!-- Hình ảnh món ăn -->
+                                        <div class="product-image me-3">
+                                            <img src="<%= detail.productInfo?.image_url %>" alt="<%= detail.productInfo?.product_name %>" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
+                                        </div>
+                                
+                                        <!-- Thông tin sản phẩm -->
+                                        <div class="product-content flex-grow-1">
+                                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                            <h5 class="mb-0">
+                                                <%= detail.productInfo?.product_name || 'Sản phẩm không xác định' %>
+                                            </h5>
+                                            <h6 class="product-price text-danger mb-0">
+                                                <%= Number(detail.subtotal).toLocaleString('vi-VN') %> VNĐ  
+                                            </h6>
+                                            </div>
+                                
+                                            <!-- Mô tả -->
+                                            <p class="text-muted mb-1" style="font-size: 0.9rem;">
+                                            <%= detail.productInfo?.description %>
+                                            </p>
+                                
+                                            <!-- Size, số lượng, đế bánh nếu có -->
+                                            <h6 class="ingredients-text mb-0" style="font-size: 0.9rem;">
+                                            Số lượng: <%= detail.quantity %> |
+                                            Size: <%= detail.sizeInfo?.size_name || detail.size_id %>
+                                            <% if (detail.crustInfo) { %>
+                                                | Đế bánh: <%= detail.crustInfo.name %>
+                                            <% } %>
+                                            </h6>
+                                        </div>
+                                        </div>
+                                    </li>
+                                    <% }) %>
+                                </ul>
+                                <!-- Chi tiết hóa đơn -->
+                                <h5 class="bill-details-title fw-semibold">Chi tiết hóa đơn</h5>
+
+                                <!-- Tạm tính -->
+                                <div class="sub-total">
+                                <h6 class="content-color fw-normal">Tạm tính</h6>
+                                <h6 class="fw-semibold">
+                                    <%= Number(order.total_price).toLocaleString('vi-VN') %> VNĐ
+                                </h6>
+                                </div>
+
+                                <!-- Phí giao hàng (chỉ khi giao hàng) -->
+                                <% if (order.order_type === 'Delivery') { %>
+                                <div class="sub-total">
+                                    <h6 class="content-color fw-normal">Phí giao hàng</h6>
+                                    <h6 class="fw-semibold success-color">22.000 VNĐ</h6>
+                                </div>
+                                <% } %>
+
+                                <!-- Tổng cộng -->
+                                <div class="grand-total">
+                                <h6 class="fw-semibold">Tổng cộng</h6>
+                                <h6 class="fw-semibold amount">
+                                    <%= Number(order.total_price).toLocaleString('vi-VN') %> VNĐ
+                                </h6>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- tracking table end -->
+
+          <div class="container-fluid">
+            <!-- footer start-->
+            <footer class="footer">
+                <div class="row">
+                  <div class="col-md-12 footer-copyright text-center">
+                    <p class="mb-0">Bản quyền 2025 thuộc về thuongpham09112000</p>
+                  </div>
+                </div>
+              </footer>
+          </div>
+        </div>
+        <!-- tracking section End -->
+      </div>
+    </div>
+    <!-- page-wrapper End -->
+
+
+    <!-- latest js -->
+    <script src="/js/jquery-3.6.0.min.js"></script>
+
+    <!-- Bootstrap js -->
+    <script src="/js/bootstrap/bootstrap.bundle.min.js"></script>
+
+    <!-- feather icon js -->
+    <script src="/js/icons/feather-icon/feather.min.js"></script>
+    <script src="/js/icons/feather-icon/feather-icon.js"></script>
+
+    <!-- scrollbar simplebar js -->
+    <script src="/js/scrollbar/simplebar.js"></script>
+    <script src="/js/scrollbar/custom.js"></script>
+
+    <!-- Sidebar js -->
+    <script src="/js/config.js"></script>
+
+    <!-- customizer js -->
+    <script src="/js/customizer.js"></script>
+    
+    <!-- Plugins JS -->
+    <script src="/js/sidebar-menu.js"></script>
+
+    <!-- select2 js -->
+    <script src="/js/select2.min.js"></script>
+    <script src="/js/select2-custom.js"></script>
+
+    <!-- Theme js -->
+    <script src="/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+      const flashMessages = {
+        success: "<%= success %>",
+        error: "<%= error %>",
+        info: "<%= info %>",
+      };
+    </script>
+    <script src="/js/customize-Swal.js"></script>
+    <script>
+        function confirmStatusChange(event, orderId) {
+            event.preventDefault(); // Ngăn form submit ngay
+        
+            const selectEl = event.target;
+            const newStatus = selectEl.value;
+            const statusText = selectEl.options[selectEl.selectedIndex].text;
+        
+            Swal.fire({
+            title: 'Xác nhận thay đổi?',
+            text: `Bạn có chắc chắn muốn chuyển trạng thái đơn hàng sang "${statusText}"?`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Xác nhận',
+            cancelButtonText: 'Hủy',
+            reverseButtons: true
+            }).then((result) => {
+            if (result.isConfirmed) {
+                // Submit form nếu xác nhận
+                document.getElementById(`orderStatusForm-${orderId}`).submit();
+            } else {
+                // Quay lại trạng thái cũ nếu hủy
+                event.target.selectedIndex = [...event.target.options].findIndex(
+                (opt) => opt.defaultSelected
+                );
+            }
+            });
+        }
+    </script>
+      
+  </body>
+
+  <!-- Mirrored from themes.pixelstrap.net/zomo/landing/backend/order-detail.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 23 Dec 2024 00:48:45 GMT -->
+</html>

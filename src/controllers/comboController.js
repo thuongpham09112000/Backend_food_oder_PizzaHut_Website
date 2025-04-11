@@ -1,5 +1,6 @@
 const comboService = require("../services/comboService.js");
 const categoryService = require("../services/categoryService.js");
+const authService = require("../services/authService.js");
 
 const comboController = {
   async addCombo(req, res) {
@@ -26,11 +27,12 @@ const comboController = {
     const isAdmin = req.originalUrl.startsWith("/admin");
     try {
       const result = await comboService.getAllCombos();
-
       let comboData = null;
       if (!result || !result.combos) {
         if (isAdmin) {
-          return res.render("combos", { title: "Combos", comboData });
+          const authData = await authService.getUserInformation(req.user.id);
+          const user = authData.user;
+          return res.render("combos", { title: "Combos", comboData, user });
         }
         return res.status(404).json({ message: "Không tìm thấy combo nào!" });
       }
@@ -38,7 +40,9 @@ const comboController = {
       comboData = result.combos;
 
       if (isAdmin) {
-        return res.render("combos", { title: "Combos", comboData });
+        const authData = await authService.getUserInformation(req.user.id);
+        const user = authData.user;
+        return res.render("combos", { title: "Combos", comboData, user });
       }
       return res
         .status(200)
@@ -54,11 +58,14 @@ const comboController = {
       const result = await comboService.getComboById(req.params.id);
       const combo = result.combo;
       const categories = await categoryService.getAllCategories();
+      const authData = await authService.getUserInformation(req.user.id);
+      const user = authData.user;
       if (isAdmin) {
         return res.render("update-combo", {
           title: "Combo",
           combo,
           categories,
+          user,
         });
       }
       return res.status(200).json(combo);

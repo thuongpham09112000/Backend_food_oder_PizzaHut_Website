@@ -6,7 +6,7 @@ class Category {
 
     try {
       const [result] = await database.execute(
-        "INSERT INTO categories (category_name, description, image_category_url) VALUES (?, ?, ?)",
+        "INSERT INTO Categories (category_name, description, image_category_url) VALUES (?, ?, ?)",
         [name, description, imageUrl || null]
       );
       return { id: result.insertId, name, description, imageUrl };
@@ -17,7 +17,7 @@ class Category {
 
   static async findAll() {
     try {
-      const [rows] = await database.execute("SELECT * FROM categories");
+      const [rows] = await database.execute("SELECT * FROM Categories");
       return rows;
     } catch (error) {
       throw new Error("Lỗi khi truy vấn danh mục từ CSDL: " + error.message);
@@ -27,7 +27,7 @@ class Category {
   static async findOneByName(category_name) {
     try {
       const [rows] = await database.execute(
-        "SELECT * FROM categories WHERE category_name = ?",
+        "SELECT * FROM Categories WHERE category_name = ?",
         [category_name]
       );
 
@@ -48,7 +48,7 @@ class Category {
 
     try {
       const placeholders = category_names.map(() => "?").join(",");
-      const query = `SELECT * FROM categories WHERE category_name IN (${placeholders})`;
+      const query = `SELECT * FROM Categories WHERE category_name IN (${placeholders})`;
       const [rows] = await database.execute(query, category_names);
 
       if (rows.length === 0) {
@@ -64,7 +64,7 @@ class Category {
   static async findById(id) {
     try {
       const [rows] = await database.execute(
-        "SELECT * FROM categories WHERE category_id = ?",
+        "SELECT * FROM Categories WHERE category_id = ?",
         [id]
       );
       if (rows.length === 0) {
@@ -84,7 +84,7 @@ class Category {
 
     try {
       const placeholders = ids.map(() => "?").join(",");
-      const query = `SELECT * FROM categories WHERE category_id IN (${placeholders})`;
+      const query = `SELECT * FROM Categories WHERE category_id IN (${placeholders})`;
       const [rows] = await database.execute(query, ids);
       return rows;
     } catch (error) {
@@ -122,7 +122,7 @@ class Category {
   static async deleteOneById(id) {
     try {
       const [result] = await database.execute(
-        "DELETE FROM categories WHERE category_id = ?",
+        "DELETE FROM Categories WHERE category_id = ?",
         [id]
       );
       return true;
@@ -138,7 +138,7 @@ class Category {
     }
     try {
       const placeholders = ids.map(() => "?").join(",");
-      const query = `DELETE FROM categories WHERE category_id IN (${placeholders})`;
+      const query = `DELETE FROM Categories WHERE category_id IN (${placeholders})`;
 
       console.log("Query thực thi:", query, ids);
 

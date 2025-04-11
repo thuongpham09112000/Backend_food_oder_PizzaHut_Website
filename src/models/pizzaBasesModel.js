@@ -38,7 +38,7 @@ class PizzaBases {
 
     try {
       const query = `
-            SELECT * FROM pizzabases 
+            SELECT * FROM PizzaBases 
             WHERE base_name IN (${base_names.map(() => "?").join(",")})
         `;
 
@@ -59,7 +59,7 @@ class PizzaBases {
 
     try {
       const query = `
-        SELECT * FROM pizzabases 
+        SELECT * FROM PizzaBases 
         WHERE base_id IN (${base_ids.map(() => "?").join(",")})
       `;
 

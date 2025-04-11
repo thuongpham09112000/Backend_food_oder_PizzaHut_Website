@@ -43,7 +43,7 @@ class Product {
   static async findOneByName(product_name) {
     try {
       const [rows] = await database.execute(
-        "SELECT * FROM products WHERE product_name = ?",
+        "SELECT * FROM Products WHERE product_name = ?",
         [product_name]
       );
 

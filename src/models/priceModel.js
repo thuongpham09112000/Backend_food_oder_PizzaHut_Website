@@ -56,19 +56,7 @@ class Price {
   // Tìm giá theo product_id
   static async findByProductId(product_id) {
     try {
-      const sql = `SELECT * FROM ProductPrices WHERE product_id = ?`;
-      const [rows] = await database.execute(sql, [product_id]);
-      return rows;
-    } catch (error) {
-      throw new Error(
-        "Lỗi khi tìm giá sản phẩm theo product_id: " + error.message
-      );
-    }
-  }
-
-  static async findByProductId(product_id) {
-    try {
-      const query = "SELECT * FROM productprices WHERE product_id = ?";
+      const query = "SELECT * FROM ProductPrices WHERE product_id = ?";
       const [rows] = await database.execute(query, [product_id]);
       return rows.length > 0 ? rows : [];
     } catch (error) {
@@ -88,6 +76,34 @@ class Price {
         error.message
       );
       throw new Error("Lỗi khi lấy danh sách kích cỡ theo product_id");
+    }
+  }
+
+  static async findPricesByProductIdAndSizeId(product_ids, size_ids) {
+    if (!Array.isArray(product_ids) || !Array.isArray(size_ids)) {
+      throw new Error("Danh sách product_id hoặc size_id không hợp lệ!");
+    }
+
+    try {
+      const placeholders = product_ids
+        .map(() => "?")
+        .join(", ")
+        .replace(/,/g, ", ");
+      const sql = `SELECT * FROM ProductPrices WHERE product_id IN (${placeholders}) AND size_id IN (${size_ids
+        .map(() => "?")
+        .join(", ")})`;
+      const values = [...product_ids, ...size_ids];
+
+      const [rows] = await database.execute(sql, values);
+      return rows;
+    } catch (error) {
+      console.error(
+        "Lỗi khi lấy danh sách giá sản phẩm theo product_id và size_id:",
+        error.message
+      );
+      throw new Error(
+        "Lỗi khi lấy danh sách giá sản phẩm theo product_id và size_id"
+      );
     }
   }
 

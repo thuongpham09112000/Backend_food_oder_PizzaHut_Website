@@ -9,11 +9,14 @@ const {
   getAddCategoryPage,
   getAddProductPage,
   getAddComboPage,
+  getUserPage,
 } = require("../controllers/Admin/adminPageControler");
 const authController = require("../controllers/authController");
 const categoryController = require("../controllers/categoryController.js");
 const productController = require("../controllers/productController.js");
 const comboController = require("../controllers/comboController.js");
+const userController = require("../controllers/userController.js");
+const orderController = require("../controllers/orderController.js");
 
 // Authentication
 router.get("/login", getLoginPage);
@@ -22,8 +25,11 @@ router.use(authAdminMiddleware);
 router.get("/", getAdminPage);
 router.get("/sign-up", getSignUpPage);
 router.post("/sign-up", authController.register);
-
 router.get("/logout", authController.logout);
+
+// User
+router.get("/users", getUserPage);
+router.post("/update-user-status/:id", userController.updateStatusUser);
 
 // Category
 router.get("/category", categoryController.getAllCategories);
@@ -58,8 +64,10 @@ router.post(
 );
 router.post("/delete-product", productController.deleteMultipleProducts);
 router.post("/delete-product/:id", productController.deleteProduct);
-
-router.post("/update-status/:id", productController.updateStatusProduct);
+router.post(
+  "/update-product-status/:id",
+  productController.updateStatusProduct
+);
 
 //Combo
 router.get("/combo", comboController.getAllCombos);
@@ -75,6 +83,12 @@ router.post(
 //   upload.single("combo_image"),
 //   comboController.updateCombo
 // );
-// router.post("/delete-combo", comboController.deleteMultipleCombos);
-// router.post("/delete-combo/:id", comboController.deleteCombo);
+router.post("/delete-combo", comboController.deleteMultipleCombos);
+router.post("/delete-combo/:id", comboController.deleteCombo);
+
+//Order
+router.get("/orders", orderController.getAllOrders);
+router.post("/orders/:id/update-status", orderController.changeOrderStatus)
+router.get("/order-detail/:id", orderController.getOrderDetailById);
+
 module.exports = router;
