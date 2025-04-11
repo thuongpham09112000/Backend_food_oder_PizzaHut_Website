@@ -4,7 +4,6 @@
   "description": "Backend food oder website pizzahut",
   "main": "server.js",
   "scripts": {
-    // "start": "nodemon src/server.js",
     "start": "node src/server.js",
     "testConnectDB": "nodemon src/config/database/connect.js"
   },
