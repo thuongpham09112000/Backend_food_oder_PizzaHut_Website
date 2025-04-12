@@ -16,7 +16,13 @@ const app = express();
 const port = process.env.PORT || 3000;
 const hostname = process.env.HOSTNAME || "localhost";
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+  })
+);
+
 app.use(cookieParser());
 
 // Áp dụng middleware chung
