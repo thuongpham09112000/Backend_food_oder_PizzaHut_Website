@@ -1,15 +1,28 @@
 const categoryService = require("../../services/categoryService.js");
 const productService = require("../../services/productService.js");
 const authService = require("../../services/authService.js");
-
+const statisticalService = require("../../services/statisticalService.js");
+const orderService = require("../../services/orderService.js");
 const getAdminPage = async (req, res) => {
   try {
     const authData = await authService.getUserInformation(req.user.id);
     const user = authData.user;
     const categories = await categoryService.getAllCategories();
     const categoryData = categories.categoriesALL;
+    const statisticalOrder = await statisticalService.getOrderStatistics();
+    const orderList = await orderService.getAllOrder();
+    const pendingOrders = orderList.orders.filter(
+      (order) => order.order_status === "Pending"
+    );
 
-    res.render("adminIndex", { title: "Dashboard", categoryData, user });
+    console.log(pendingOrders);
+    res.render("adminIndex", {
+      title: "Dashboard",
+      categoryData,
+      user,
+      statisticalOrder,
+      pendingOrders,
+    });
   } catch (error) {
     res.status(500).json({ message: "Lỗi khi lấy trang Admin", error });
   }

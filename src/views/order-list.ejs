@@ -475,7 +475,13 @@
                               </td>
 
                               <td class="text-center">
-                                <%= order.order_type %>
+                                <% if (order.order_type === 'Pick up') { %>
+                                  Tự đến lấy
+                                <% } else if (order.order_type === 'Delivery') { %>
+                                  Giao tận nơi
+                                <% } else { %>
+                                  <%= order.order_type %>
+                                <% } %>
                               </td>
 
                               <%

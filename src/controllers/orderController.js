@@ -33,7 +33,7 @@ const orderController = {
     const isAdmin = req.originalUrl.startsWith("/admin");
     try {
       const response = await orderService.getAllOrder();
-      //   console.log(">>>>", response.orders);
+      console.log(">>>>", response.orders);
 
       if (isAdmin) {
         const authData = await authService.getUserInformation(req.user.id);
@@ -96,10 +96,10 @@ const orderController = {
   // Cập nhật trạng thái đơn hàng
   async changeOrderStatus(req, res) {
     const isAdmin = req.originalUrl.startsWith("/admin");
-    const orderId = req.params.id
-    const status= req.body.order_status;
+    const orderId = req.params.id;
+    const status = req.body.order_status;
     console.log("status", status);
-    
+
     try {
       const response = await orderService.changeOrderStatus(orderId, status);
 

@@ -431,7 +431,7 @@
                       <span>Orders</span>
                     </a>
                   </li>
-                </ul>  
+                </ul>
               </div>
 
               <div class="right-arrow" id="right-arrow">
@@ -524,8 +524,12 @@
                           <div
                             class="col-lg-5 d-flex d-lg-block justify-content-between align-items-center"
                           >
-                            <h5>Total Sale</h5>
-                            <h2>$254.90</h2>
+                            <h5>Doanh thu trong ngày</h5>
+                            <h2>
+                              <%=
+                              statisticalOrder.statistics.totalRevenueToday.toLocaleString('vi-VN')
+                              %> VNĐ
+                            </h2>
                           </div>
                           <div class="col-lg-7 col-12 p-0">
                             <div id="daily-value"></div>
@@ -541,8 +545,12 @@
                           <div
                             class="col-lg-5 d-flex d-lg-block justify-content-between align-items-center"
                           >
-                            <h5>Total Profit</h5>
-                            <h2>$254.90</h2>
+                            <h5>Lượng đơn trong ngày</h5>
+                            <h2>
+                              <%=
+                              statisticalOrder.statistics.totalOrdersToday.toLocaleString()
+                              %>
+                            </h2>
                           </div>
                           <div class="col-lg-7 col-12 p-0">
                             <div id="order-value"></div>
@@ -556,8 +564,12 @@
                       <div class="card-body">
                         <div class="row align-items-center">
                           <div class="col-5">
-                            <h5>Customer rate</h5>
-                            <h2>5.12%</h2>
+                            <h5>Lượng đơn theo tuần</h5>
+                            <h2>
+                              <%=
+                              statisticalOrder.statistics.totalOrdersThisWeek.toLocaleString()
+                              %>
+                            </h2>
                           </div>
                           <div class="col-7 p-0">
                             <div id="admissionRatio"></div>
@@ -579,191 +591,62 @@
                         <table class="table user-table" id="table_id">
                           <thead>
                             <tr>
-                              <th>
-                                <input
-                                  id="checkall​"
-                                  class="custom-checkbox"
-                                  type="checkbox"
-                                  name="text"
-                                />
-                              </th>
-                              <th>Food</th>
-                              <th>Customer</th>
-                              <th>Order Date</th>
-                              <th>Price</th>
-                              <th>Status</th>
+                              <th>Mã đơn</th>
+                              <th>Khách hàng</th>
+                              <th>Thời gian</th>
+                              <th>Giá</th>
+                              <th>Loại đơn</th>
                             </tr>
                           </thead>
 
                           <tbody>
-                            <tr>
-                              <td>
-                                <input
-                                  class="custom-checkbox"
-                                  type="checkbox"
-                                  name="text"
-                                />
-                              </td>
-
-                              <td>
-                                <div class="table-image">
-                                  <img
-                                    src="/images/dashboard/product-2/1.jpg"
-                                    class="img-fluid"
-                                    alt=""
-                                  />
-                                  <h5>Fish Burger</h5>
-                                </div>
-                              </td>
-                              <td>Jessica Taylor</td>
-                              <td>25/10/2024</td>
-
-                              <td>$30.00</td>
-
-                              <td>
-                                <div class="pending">pending</div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <input
-                                  class="custom-checkbox"
-                                  type="checkbox"
-                                  name="text"
-                                />
-                              </td>
-
-                              <td>
-                                <div class="table-image">
-                                  <img
-                                    src="/images/dashboard/product-2/2.jpg"
-                                    class="img-fluid"
-                                    alt=""
-                                  />
-                                  <h5>Pepperoni Pizza</h5>
-                                </div>
-                              </td>
-                              <td>Jane Cooper</td>
-                              <td>20/1/2024</td>
-
-                              <td>$57.20</td>
-
-                              <td>
-                                <div class="completed">completed</div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <input
-                                  class="custom-checkbox"
-                                  type="checkbox"
-                                  name="text"
-                                />
-                              </td>
-
-                              <td>
-                                <div class="table-image">
-                                  <img
-                                    src="/images/dashboard/product-2/3.jpg"
-                                    class="img-fluid"
-                                    alt=""
-                                  />
-                                  <h5>Hot Dog</h5>
-                                </div>
-                              </td>
-                              <td>Olivia Anderson</td>
-                              <td>18/10/2024</td>
-
-                              <td>$40.00</td>
-
-                              <td>
-                                <div class="pending">pending</div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <input
-                                  class="custom-checkbox"
-                                  type="checkbox"
-                                  name="text"
-                                />
-                              </td>
-
-                              <td>
-                                <div class="table-image">
-                                  <img
-                                    src="/images/dashboard/product-2/4.jpg"
-                                    class="img-fluid"
-                                    alt=""
-                                  />
-                                  <h5>Nachos</h5>
-                                </div>
-                              </td>
-                              <td>Sophia Garcia</td>
-                              <td>02/08/2024</td>
-
-                              <td>$30.25</td>
-
-                              <td>
-                                <div class="completed">completed</div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <input
-                                  class="custom-checkbox"
-                                  type="checkbox"
-                                  name="text"
-                                />
-                              </td>
-
-                              <td>
-                                <div class="table-image">
-                                  <img
-                                    src="/images/dashboard/product-2/5.jpg"
-                                    class="img-fluid"
-                                    alt=""
-                                  />
-                                  <h5>Beef Burger</h5>
-                                </div>
-                              </td>
-                              <td>Michael Smith</td>
-                              <td>05/05/2024</td>
-
-                              <td>$50.00</td>
-                              <td>
-                                <div class="pending">pending</div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <input
-                                  class="custom-checkbox"
-                                  type="checkbox"
-                                  name="text"
-                                />
-                              </td>
-
-                              <td>
-                                <div class="table-image">
-                                  <img
-                                    src="/images/dashboard/product-2/6.jpg"
-                                    class="img-fluid"
-                                    alt=""
-                                  />
-                                  <h5>Japanese Ramen</h5>
-                                </div>
-                              </td>
-                              <td>David Wilson</td>
-                              <td>26/07/2024</td>
-
-                              <td>$71.010</td>
-
-                              <td>
-                                <div class="completed">completed</div>
-                              </td>
-                            </tr>
+                            <% if (pendingOrders.length > 0) { %>
+                              <% pendingOrders.forEach(order => { %>
+                                <tr>
+                                  <td>
+                                    <div class="table-image">
+                                    <a
+                                      href="/admin/order-detail/<%= order.order_id %>"
+                                    >
+                                      <h5>#<%= order.order_id %></h5>
+                                    </a>
+                                    </div>
+                                  </td>
+                                  <td><%= order.user?.full_name || 'Không rõ' %></td>
+                                  <td>
+                                    <%= new Date(order.created_at).toLocaleString('vi-VN', {
+                                      hour: '2-digit',
+                                      minute: '2-digit',
+                                      second: '2-digit',
+                                      day: '2-digit',
+                                      month: '2-digit',
+                                      year: 'numeric',
+                                      hour12: false
+                                    }) %>
+                                  </td>                                  
+                                  <td>
+                                    <%= Number(order.total_price).toLocaleString('vi-VN') %> VNĐ
+                                  </td>
+                                  <td>
+                                    <div class="pending">
+                                      <% if (order.order_type === 'Pick up') { %>
+                                        Tự đến lấy
+                                      <% } else if (order.order_type === 'Delivery') { %>
+                                        Giao tận nơi
+                                      <% } else { %>
+                                        <%= order.order_type %>
+                                      <% } %>
+                                    </div>
+                                  </td>                                 
+                                </tr>
+                              <% }) %>
+                            <% } else { %>
+                              <tr>
+                                <td colspan="5" class="text-center">Không có đơn hàng chờ xác nhận.</td>
+                              </tr>
+                            <% } %>
                           </tbody>
+                          
                         </table>
                       </div>
                     </div>
@@ -773,7 +656,12 @@
               <div class="col-xl-5">
                 <div class="card">
                   <div class="card-header mb-0">
-                    <h5>Số liệu bán hàng</h5>
+                    <h5>Doanh thu theo tuần</h5>
+                    <h2>
+                      <%=
+                      statisticalOrder.statistics.totalRevenueThisWeek.toLocaleString('vi-VN')
+                      %> VNĐ
+                    </h2>
                   </div>
                   <div class="card-body">
                     <div id="earning-average"></div>
@@ -1181,7 +1069,6 @@
       <!-- Page Body End -->
     </div>
     <!-- page-wrapper End-->
-
 
     <!-- latest js -->
     <script src="js/jquery-3.6.0.min.js"></script>
