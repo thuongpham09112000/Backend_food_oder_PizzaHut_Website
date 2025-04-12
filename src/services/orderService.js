@@ -168,7 +168,8 @@ const getAllOrder = async () => {
   try {
     const orders = await Order.getAllOrders();
     if (!orders || orders.length === 0) {
-      throw new Error("Không tìm thấy đơn hàng nào trong hệ thống.");
+      // Trả về danh sách rỗng thay vì ném lỗi
+      return { success: true, orders: [] };
     }
 
     const userIds = [...new Set(orders.map((order) => order.user_id))];
@@ -184,7 +185,7 @@ const getAllOrder = async () => {
 
     return { success: true, orders: ordersWithUserInfo };
   } catch (error) {
-    console.error("Error in getAllOder service:", error.message);
+    console.error("Error in getAllOrder service:", error.message);
     throw new Error(
       error.message || "Đã xảy ra lỗi khi lấy danh sách tất cả đơn hàng."
     );

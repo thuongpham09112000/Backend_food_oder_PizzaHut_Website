@@ -12,8 +12,17 @@ const getOrderStatistics = async () => {
   try {
     // Lấy tất cả đơn hàng
     const { success, orders } = await getAllOrder();
-    if (!success) {
-      throw new Error("Không thể lấy danh sách đơn hàng.");
+    if (!success || orders.length === 0) {
+      // Trả về thống kê mặc định nếu không có đơn hàng
+      return {
+        success: true,
+        statistics: {
+          totalOrdersToday: 0,
+          totalRevenueToday: 0,
+          totalOrdersThisWeek: 0,
+          totalRevenueThisWeek: 0,
+        },
+      };
     }
 
     const now = dayjs().tz("Asia/Ho_Chi_Minh");
@@ -28,22 +37,20 @@ const getOrderStatistics = async () => {
       totalRevenueThisWeek: 0,
     };
 
-    // Chỉ chấp nhận trạng thái "Done" để tính doanh thu
     const validStatus = "Done";
 
     orders.forEach((order) => {
-      // Chuyển đổi created_at thành đối tượng dayjs
-      const orderDate = dayjs(new Date(order.created_at)).tz("Asia/Ho_Chi_Minh");
+      const orderDate = dayjs(new Date(order.created_at)).tz(
+        "Asia/Ho_Chi_Minh"
+      );
 
       if (!orderDate.isValid()) {
         console.warn(`Ngày tạo đơn hàng không hợp lệ: ${order.created_at}`);
         return;
       }
 
-      // Chỉ tính doanh thu nếu trạng thái đơn hàng là "Done"
       const isValidOrder = order.order_status === validStatus;
 
-      // Thống kê trong ngày
       if (orderDate.isSameOrAfter(startOfToday)) {
         statistics.totalOrdersToday += 1;
         if (isValidOrder) {
@@ -51,7 +58,6 @@ const getOrderStatistics = async () => {
         }
       }
 
-      // Thống kê trong tuần
       if (orderDate.isSameOrAfter(startOfWeek)) {
         statistics.totalOrdersThisWeek += 1;
         if (isValidOrder) {
