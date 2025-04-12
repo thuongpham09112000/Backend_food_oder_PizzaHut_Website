@@ -19,7 +19,7 @@ const hostname = process.env.HOSTNAME || "localhost";
 app.use(
   cors({
     origin: "*",
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   })
 );
 
